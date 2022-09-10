@@ -319,7 +319,6 @@ If you are using TypeScript, add `vitest/globals` to the `types` field in your `
   }
 }
 ```
-
 :::
 
 Then create a file ending in `*.test.js` in your project. You can place all test files in a test directory in project root, or in test directories next to your source files. Vitest will automatically search for them using the naming convention.
@@ -418,7 +417,6 @@ export function withSetup(composable) {
   return [result, app]
 }
 ```
-
 ```js
 import { withSetup } from './test-utils'
 import { useFoo } from './foo'
