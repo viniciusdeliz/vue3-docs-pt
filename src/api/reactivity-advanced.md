@@ -95,7 +95,6 @@ Creates a customized ref with explicit control over its dependency tracking and 
 
   ```js
   import { customRef } from 'vue'
-
   export function useDebouncedRef(value, delay = 200) {
     let timeout
     return customRef((track, trigger) => {

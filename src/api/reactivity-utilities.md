@@ -116,7 +116,6 @@ Can also be used to create a ref for a property on a source reactive object. The
   ```vue
   <script setup>
   import { toRef } from 'vue'
-
   const props = defineProps(/* ... */)
 
   // convert `props.foo` into a ref, then pass into

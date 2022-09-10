@@ -95,7 +95,6 @@ A "meta component" for rendering dynamic components or elements.
   ```vue
   <script setup>
   import { ref } from 'vue'
-
   const tag = ref('input')
   const username = ref('')
   </script>
