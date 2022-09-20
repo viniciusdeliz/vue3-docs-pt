@@ -113,7 +113,7 @@ Se considerares estes conceitos intimidantes, não te preocupes! A aula e o guia
 
 Se você é um programador experiente interessado em como integrar melhor Vue na suas ferramentas, ou se estiver curioso a respeito do que estes termos significam, nós os discutimos em maiores detalhes em [Maneiras de Usar Vue](/guide/extras/ways-of-using-vue).
 
-Apesar da flexibilidade, o conhecimento principal a respeito de como a Vua funciona é partilhado por todos estes casos de uso. Mesmo se agora fores apenas um principiante, o conhecimento adquirido pelo caminho manter-se-á útil a medida que cresceres para lidares com objetivos mais ambiciosos no futuro. Se fores um veterano, podes escolher a maneira ideal de entregar a Vue baseado nos problemas que estás tentando resolver, enquanto conservas a mesma produtividade. Isto é a razão de nós chamarmos a Vue "A Abstração Progressiva": é uma abstração que pode crescer contigo e adaptar-se as tuas necessidades.
+Apesar da flexibilidade, o conhecimento principal a respeito de como a Vua funciona é partilhado por todos estes casos de uso. Mesmo se agora fores apenas um principiante, o conhecimento adquirido pelo caminho manter-se-á útil a medida que cresceres para lidares com objetivos mais ambiciosos no futuro. Se fores um veterano, podes escolher a maneira ideal de entregar a Vue baseado nos problemas que estás tentando resolver, enquanto conservas a mesma produtividade. Isto é a razão de nós chamarmos a Vue de "A Abstração Progressiva": é uma abstração que pode crescer contigo e adaptar-se as tuas necessidades.
 
 ## Componentes de Arquivo Único {#single-file-components}
 
