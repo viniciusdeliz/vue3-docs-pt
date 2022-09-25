@@ -10,42 +10,27 @@ footer: false
 
 - Se você prefere uma configuração de HTML puro sem etapas de compilação, você pode usar este [JSFiddle](https://jsfiddle.net/yyx990803/2ke1ab0z/) como seu ponto de partida.
 
-## Com Ferramentas de Construção
+- Para ter um gosto da Vue rapidamente, podes experimentá-la diretamente na nossa [Zona de Testes](https://sfc.vuejs.org/#eNo9j01qAzEMha+iapMWOjbdDm6gu96gG2/cjJJM8B+2nBaGuXvlpBMwtj4/JL234EfO6toIRzT1UObMexvpN6fCMNHRNc+w2AgwOXbPL/caoBC3EjcCCPU0wu6TvE/wlYqfnnZ3ae2PXHKMfiwQYArZOyYhAHN+2y9LnwLrarTQ7XeOuTFch5Am8u8WRbcoktGPbnzFOXS3Q3BZXWqKkuRmy/4L1eK4GbUoUTtbPDPnOmpdj4ee/1JVKictlSot8hxIUQ3Dd0k/lYoMtrglwfUPkXdoJg==).
 
-Uma configuração de construção permite-te utilizar [Componentes de Ficheiro Único (SFCs, sigla em Inglês)](/guide/scaling-up/sfc) de Vue. A configuração de construção de Vue oficial está baseada sobre a [Vite](https://vitejs.dev), uma ferramenta de construção de frontend que é moderna, leve e extremamente rápida.
+- Se preferires uma configuração de HTML simples sem etapas de construção, podes utilizar este [JSFiddle](https://jsfiddle.net/yyx990803/2ke1ab0z/) como teu ponto de partida.
 
-- If you are already familiar with Node.js and the concept of build tools, you can also try a complete build setup right within your browser on [StackBlitz](https://vite.new/vue).
+- Se você já está familiarizado com Node.js e o conceito de ferramentas de compilação, você também pode experimentar uma configuração de compilação completa direto do seu navegador no [StackBlitz](https://vite.new/vue).
 
 ## Criando uma aplicação Vue {#creating-a-vue-application}
-
-:::tip Prerequisites
-
-- Familiarity with the command line
-- Install [Node.js](https://nodejs.org/) version 16.0 or higher
-  :::
-
-In this section we will introduce how to scaffold a Vue [Single Page Application](/guide/extras/ways-of-using-vue#single-page-application-spa) on your local machine. The created project will be using a build setup based on [Vite](https://vitejs.dev) and allow us to use Vue [Single-File Components](/guide/scaling-up/sfc) (SFCs).
-
-Make sure you have an up-to-date version of [Node.js](https://nodejs.org/) installed and your current working directory is the one where you intend to create a project. Run the following command in your command line (without the `>` sign):
-
-<div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt;</span> <span style="color:#A6ACCD;">npm init vue@latest</span></span></code></pre></div>
-
-This command will install and execute [create-vue](https://github.com/vuejs/create-vue), the official Vue project scaffolding tool. You will be presented with prompts for several optional features such as TypeScript and testing support:
-Tu podes experimentar a Vue com os Componentes de Ficheiro Único online na [StackBlitz](https://vite.new/vue). A StackBlitz executa uma configuração de construção baseada na Vite diretamente no navegador, assim é quase idêntico a configuração local porém não requer a instalação de nada na tua máquina.
-
-### Local
 
 :::tip Pré-requisitos
 
 - Familiaridade com a linha de comando
-- Instalar a [Node.js](https://nodejs.org/)
+- Instale a versão 16.0 ou superior da [Node.js](https://nodejs.org/)
 :::
 
-Para criar um projeto de Vue com ferramenta de construção ativada na tua máquina, execute o seguinte comando na tua linha de comando (sem o sinal `>`):
+Nesta secção introduziremos como estruturar uma [Aplicação de Página Única](/guide/extras/ways-of-using-vue.html#single-page-application-spa) de Vue na tua máquina local. O projeto criado estará utilizando uma configuração de construção baseada na [Vite](https://vitejs.dev), e permite-nos utilizar os [Componentes de Ficheiro Único](/guide/scaling-up/sfc) de Vue.
+
+Certifica-te de tens uma versão atualizada da [Node.js](https://nodejs.org) instalada, depois execute o seguinte comando na tua linha de comando (sem o sinal `>`):
 
 <div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt;</span> <span style="color:#A6ACCD;">npm init vue@latest</span></span></code></pre></div>
 
-Este comando instalará e executará [create-vue](https://github.com/vuejs/create-vue), a ferramenta de andaimes de projeto de Vue oficial. Tu serás presenteado com os pontos para um número de funcionalidades opcionais tais como TypeScript e suporte a testagem:
+Este comando instalará e executará [create-vue](https://github.com/vuejs/create-vue), a ferramenta oficial de estruturação de projeto de Vue. Tu serás presenteado com uma lista com um número de funcionalidades opcionais tais como TypeScript e suporte a testagem:
 
 <div class="language-sh"><pre><code><span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Project name: <span style="color:#888;">… <span style="color:#89DDFF;">&lt;</span><span style="color:#888;">your-project-name</span><span style="color:#89DDFF;">&gt;</span></span></span>
 <span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add TypeScript? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
@@ -67,7 +52,7 @@ Se estiveres inseguro a respeito de uma opção, por agora simplesmente escolha 
 <span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">npm run dev</span></span>
 <span class="line"></span></code></pre></div>
 
-Agora deves ter o teu primeiro projeto em Vue executando! Note que os componentes de exemplo no projeto gerado estão escritos utilizando a [API de Composição](/guide/introduction#composition-api) e `<script setup>`, no lugar da [API de Opções](/guide/introduction#options-api). Aqui vão algumas dicas adicionais:
+Agora você deve ter seu primeiro projeto em Vue executando! Note que os componentes de exemplo no projeto gerado estão escritos utilizando a [API de Composição](/guide/introduction#composition-api) e `<script setup>`, no lugar da [API de Opções](/guide/introduction#options-api). Aqui vão algumas dicas adicionais:
 
 - A configuração de IDE recomendada é [Visual Studio Code](https://code.visualstudio.com/) + [extensão Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar). Se utilizas outros editores, consulte a [seção de suporte de IDE](/guide/scaling-up/tooling#ide-support).
 - Mais detalhes do ferramental, incluindo integração com abstrações de backend, são discutidas no [Guia de Ferramental](/guide/scaling-up/tooling).
@@ -91,11 +76,11 @@ Você pode usar Vue diretamente por uma CDN através de um identificador script:
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 ```
 
-Here we are using [unpkg](https://unpkg.com/), but you can also use any CDN that serves npm packages, for example [jsdelivr](https://www.jsdelivr.com/package/npm/vue) or [cdnjs](https://cdnjs.com/libraries/vue). Of course, you can also download this file and serve it yourself.
+Aqui estamos utilizando [unpkg](https://unpkg.com/), mas você também pode utilizar qualquer CDN que distribua pacotes npm, por exemplo [jsdelivr](https://www.jsdelivr.com/package/npm/vue) ou [cdnjs](https://cdnjs.com/libraries/vue). Claro, você também pode baixar o arquivo e servir por si próprio.
 
-When using Vue from a CDN, there is no "build step" involved. This makes the setup a lot simpler, and is suitable for enhancing static HTML or integrating with a backend framework. However, you won't be able to use the Single-File Component (SFC) syntax.
+Ao utilizar Vue com uma CDN, não há "etapa de compilação" envolvida. Isto torna a configuração muito mais simples, e é adequado para a otimização de HTML estático ou integração com um _framework backend_. No entanto, você não será capaz de utilizar a sintaxe de Componente de Arquivo Único.
 
-### Using the Global Build {#using-the-global-build}
+### Utilizando a _Build_ Global {#using-the-global-build}
 
 O exemplo acima utiliza a _build_ global de Vue onde todas as APIs de nível superior são expostas no objeto global `Vue`. Aqui temos um exemplo completo usando a API global:
 
@@ -292,7 +277,7 @@ Os exemplos até aqui estão utilizando a versão de desenvolvimento do Vue - se
 
 ### Dividindo Módulos {#splitting-up-the-modules}
 
-Conforme mergulhamos mais a fundo no guia, poderemos precisar separar o nosso código em ficheiros de JavaScript separados para que sejam mais fácil de gerir. Por exemplo:
+A medida que mergulhamos mais fundo no guia, poderemos precisar dividir o nosso código para dentro de ficheiros de JavaScript separados para que eles sejam mais fáceis de gerir. Por exemplo:
 
 ```html
 <!-- index.html -->
