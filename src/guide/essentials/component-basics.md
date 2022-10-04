@@ -1,16 +1,16 @@
-# Components Basics {#components-basics}
+# Fundamentos de Componentes {#components-basics}
 
-Components allow us to split the UI into independent and reusable pieces, and think about each piece in isolation. It's common for an app to be organized into a tree of nested components:
+Os componentes permitem-te separar a Interface de Utilizador (UI, sigla em Inglês) em pedaços independentes e reutilizáveis, e pensar a respeito de cada pedaço separadamente. É comum para uma aplicação ser organizada em uma árvore de componentes encaixados:
 
-![Component Tree](./images/components.png)
+![Árvore de Componente](./images/components.png)
 
 <!-- https://www.figma.com/file/qa7WHDQRWuEZNRs7iZRZSI/components -->
 
-This is very similar to how we nest native HTML elements, but Vue implements its own component model that allow us to encapsulate custom content and logic in each component. Vue also plays nicely with native Web Components. If you are curious about the relationship between Vue Components and native Web Components, [read more here](/guide/extras/web-components).
+É muito semelhante a como encaixamos elementos nativos de HTML, mas a Vue implemente seu próprio modelo de componente que permite-nos resumir o conteúdo e lógica personalizados dentro de cada componente. A Vua também trabalha com Componentes de Web nativos, [leia mais a respeito](/guide/extras/web-components).
 
-## Defining a Component {#defining-a-component}
+## Definindo um Componente {#defining-a-component}
 
-When using a build step, we typically define each Vue component in a dedicated file using the `.vue` extension - known as a [Single-File Component](/guide/scaling-up/sfc) (SFC for short):
+Quando estamos utilizando um etapa de construção, normalmente definimos cada componente de Vue em um ficheiro dedicado utilizando a extensão `.vue` - conhecido como [Componente de Ficheiro Único](/guide/scaling-up/sfc) (SFC, sigla e abreviação em Inglês):
 
 <div class="options-api">
 
@@ -47,7 +47,7 @@ const count = ref(0)
 
 </div>
 
-When not using a build step, a Vue component can be defined as a plain JavaScript object containing Vue-specific options:
+Quando não estamos utilizando uma etapa de construção, um componente de Vue pode ser definido como um simples objeto de JavaScript contendo opções especificas de Vue:
 
 <div class="options-api">
 
@@ -87,17 +87,17 @@ export default {
 
 </div>
 
-The template is inlined as a JavaScript string here, which Vue will compile on the fly. You can also use an ID selector pointing to an element (usually native `<template>` elements) - Vue will use its content as the template source.
+O modelo de marcação está em linha como um sequência de caracteres de JavaScript, o qual a Vue compilará rapidamente. Tu também podes utilizar um seletor de ID apontando para um elemento (normalmente elementos `<template>` nativos) - a Vue utilizará o seu conteúdo como fonte do modelo de marcação.
 
-The example above defines a single component and exports it as the default export of a `.js` file, but you can use named exports to export multiple components from the same file.
+O exemplo acima define um único componente e o exporta como exportação padrão de um ficheiro `.js`, porém podes utilizar exportações nomeadas para exportar vários componentes do mesmo ficheiro.
 
-## Using a Component {#using-a-component}
+## Utilizando um Componente {#using-a-component}
 
 :::tip
-We will be using SFC syntax for the rest of this guide - the concepts around components are the same regardless of whether you are using a build step or not. The [Examples](/examples/) section shows component usage in both scenarios.
+Nós estaremos utilizando a sintaxe de SFC para o resto deste guia - os conceitos em torno dos componentes são os mesmos independentemente de estares utilizando uma etapa de construção ou não. A secção de [Exemplos](/examples/) apresenta a utilização de componente em ambos cenários.
 :::
 
-To use a child component, we need to import it in the parent component. Assuming we placed our counter component inside a file called `ButtonCounter.vue`, the component will be exposed as the file's default export:
+Para utilizar um componente filho, precisamos importá-lo dentro do componente pai. Assumindo de que colocamos o nosso componente `counter` (contador) dentro de um ficheiro chamado de `ButtonCounter.vue`, o componente será exposto como exportação padrão do ficheiro:
 
 <div class="options-api">
 
@@ -118,7 +118,7 @@ export default {
 </template>
 ```
 
-To expose the imported component to our template, we need to [register](/guide/components/registration) it with the `components` option. The component will then be available as a tag using the key it is registered under.
+Para expor o componente importado para o nosso modelo de marcação, precisamos [registá-lo](/guide/components/registration) com a opção `components`. O componente estará então disponível como um marcador utilizando a chave sob qual está registado.
 
 </div>
 
@@ -135,13 +135,13 @@ import ButtonCounter from './ButtonCounter.vue'
 </template>
 ```
 
-With `<script setup>`, imported components are automatically made available to the template.
+No caso de `<script setup>`, os componentes importados são automaticamente tornados disponíveis para o modelo de marcação.
 
 </div>
 
-It's also possible to globally register a component, making it available to all components in a given app without having to import it. The pros and cons of global vs. local registration is discussed in the dedicated [Component Registration](/guide/components/registration) section.
+Também é possível registar um componente globalmente, tornando-o disponível para todos os componentes em uma dada aplicação sem ter de importá-lo. Os prós e os contras o registo global versus o registo local são discutidos em uma secção dedicada [Registo de Componente](/guide/components/registration).
 
-Components can be reused as many times as you want:
+Os componentes podem ser reutilizados quantas quiseres:
 
 ```vue-html
 <h1>Here are many child components!</h1>
@@ -161,26 +161,26 @@ Components can be reused as many times as you want:
 
 </div>
 
-Notice that when clicking on the buttons, each one maintains its own, separate `count`. That's because each time you use a component, a new **instance** of it is created.
+Repare que quando clicar sobre os botões, cada um mantém seu próprio, `count` separado. É por isto que toda vez que utilizares um componente, uma nova **instância** dele é criada.
 
-In SFCs, it's recommended to use `PascalCase` tag names for child components to differentiate from native HTML elements. Although native HTML tag names are case-insensitive, Vue SFC is a compiled format so we are able to use case-sensitive tag names in it. We are also able to use `/>` to close a tag.
+Em componentes de ficheiro único, é recomendado utilizar nomes de marcador em `PascalCase` para os componentes filhos para diferenciá-los dos elementos de HTML nativos. Embora os nomes de marcador de HTML sejam insensíveis a caixa, O Componente de Ficheiro Único de Vue é um formato compilado assim somos capazes de utilizar nomes de marcador sensíveis a caixa nele. Nós também somos capazes de utilizar `/>` para fechar um marcador.
 
-If you are authoring your templates directly in a DOM (e.g. as the content of a native `<template>` element), the template will be subject to the browser's native HTML parsing behavior. In such cases, you will need to use `kebab-case` and explicit closing tags for components:
+Se estiveres escrevendo os teus modelos de marcação diretamente em um DOM (por exemplo, como conteúdo de um elemento `<template>` nativo), o modelo de marcação estará sujeito ao comportamento de analise de HTML nativo do navegador. Em tais casos, precisarás utilizar `kebab-case` e fechamento explicito de marcadores para os componentes:
 
 ```vue-html
-<!-- if this template is written in the DOM -->
+<!-- se este modelo de marcação estiver escrito no DOM -->
 <button-counter></button-counter>
 <button-counter></button-counter>
 <button-counter></button-counter>
 ```
 
-See [DOM template parsing caveats](#dom-template-parsing-caveats) for more details.
+Consulte [Advertências de Analise de Modelo de Marcação de DOM](#advertências-de-analise-de-modelo-de-marcação-de-dom) para mais detalhes.
 
-## Passing Props {#passing-props}
+## Passando Propriedades {#passing-props}
 
-If we are building a blog, we will likely need a component representing a blog post. We want all the blog posts to share the same visual layout, but with different content. Such a component won't be useful unless you can pass data to it, such as the title and content of the specific post we want to display. That's where props come in.
+Se estivermos construindo um blogue, provavelmente precisaremos de um componente representando uma publicação de blogue. Nós queremos todas as publicações de blogue partilhando o mesmo esquema visual, mas com conteúdo diferente. Tal componente não será útil a menos que possas passar dados para ele, tais como o título e o conteúdo específico da publicação que queremos mostrar. É onde as propriedades entram.
 
-Props are custom attributes you can register on a component. To pass a title to our blog post component, we must declare it in the list of props this component accepts, using the <span class="options-api">[`props`](/api/options-state#props) option</span><span class="composition-api">[`defineProps`](/api/sfc-script-setup#defineprops-defineemits) macro</span>:
+As propriedades (`props`) são atributos personalizados que podes registar sobre um componente. Para passar um título ao componente de publicação de blogue, deves declará-lo em uma lista de propriedades que este componente aceita, utilizando a <span class="options-api">opção [`props`](/api/options-state#props)</span><span class="composition-api">macro [`defineProps`](/api/sfc-script-setup#defineprops-defineemits)</span>:
 
 <div class="options-api">
 
@@ -197,7 +197,7 @@ export default {
 </template>
 ```
 
-When a value is passed to a prop attribute, it becomes a property on that component instance. The value of that property is accessible within the template and on the component's `this` context, just like any other component property.
+Quando um valor é passado para um atributo de propriedade, ele torna-se uma propriedade naquela instância de componente. O valor daquela propriedade é acessível dentro do modelo de marcação e no contexto `this` do componente, tal como qualquer outra propriedade de componente.
 
 </div>
 <div class="composition-api">
@@ -213,16 +213,16 @@ defineProps(['title'])
 </template>
 ```
 
-`defineProps` is a compile-time macro that is only available inside `<script setup>` and does not need to be explicitly imported. Declared props are automatically exposed to the template. `defineProps` also returns an object that contains all the props passed to the component, so that we can access them in JavaScript if needed:
+A `defineProps` é uma macro de tempo de compilação que só está disponível dentro de `<script setup>` e não precisa ser explicitamente importada. As propriedades declaradas são expostas automaticamente para o modelo de marcação. A `defineProps` também retorna um objeto que contém todas as propriedades passadas para o componente, para que possamos acessá-los em JavaScript caso necessário:
 
 ```js
 const props = defineProps(['title'])
 console.log(props.title)
 ```
 
-See also: [Typing Component Props](/guide/typescript/composition-api#typing-component-props) <sup class="vt-badge ts" />
+Consulte também: [Tipando Propriedades de Componente](/guide/typescript/composition-api#typing-component-props) <sup class="vt-badge ts" />
 
-If you are not using `<script setup>`, props should be declared using the `props` option, and the props object will be passed to `setup()` as the first argument:
+Se não estiveres utilizando `<script setup>`, as propriedades devem ser declaradas utilizando a opção `props`, e o objeto de propriedades será passado para o `setup()` como primeiro argumento:
 
 ```js
 export default {
@@ -235,9 +235,9 @@ export default {
 
 </div>
 
-A component can have as many props as you like and, by default, any value can be passed to any prop.
+Um componente pode ter quantas propriedades achares conveniente, por padrão, qualquer valor pode ser passado para qualquer propriedade.
 
-Once a prop is registered, you can pass data to it as a custom attribute, like this:
+Assim que uma propriedade é registada, podes dados para ela como um atributo personalizado, desta maneira:
 
 ```vue-html
 <BlogPost title="My journey with Vue" />
@@ -245,7 +245,7 @@ Once a prop is registered, you can pass data to it as a custom attribute, like t
 <BlogPost title="Why Vue is so fun" />
 ```
 
-In a typical app, however, you'll likely have an array of posts in your parent component:
+Em uma aplicação normal, no entanto, provavelmente terás um arranjo de publicações no teu componente pai:
 
 <div class="options-api">
 
@@ -277,7 +277,7 @@ const posts = ref([
 
 </div>
 
-Then want to render a component for each one, using `v-for`:
+Então desejarás interpretar um componente para cada publicação, utilizando `v-for`:
 
 ```vue-html
 <BlogPost
@@ -298,15 +298,15 @@ Then want to render a component for each one, using `v-for`:
 
 </div>
 
-Notice how `v-bind` is used to pass dynamic prop values. This is especially useful when you don't know the exact content you're going to render ahead of time.
+Repara como `v-bind` é utilizado para passar valores de propriedade dinâmica. Isto é especialmente útil quando não sabes o exato conteúdo que estarás a interpretar antes da hora marcada.
 
-That's all you need to know about props for now, but once you've finished reading this page and feel comfortable with its content, we recommend coming back later to read the full guide on [Props](/guide/components/props).
+É tudo que precisas saber a respeito das propriedades por agora, mas assim que terminada a leitura desta página e estiveres confortável com o seu conteúdo, recomendamos retornar a leitura do guia completo em [Propriedades](/guide/components/props).
 
-## Listening to Events {#listening-to-events}
+## Ouvindo Eventos {#listening-to-events}
 
-As we develop our `<BlogPost>` component, some features may require communicating back up to the parent. For example, we may decide to include an accessibility feature to enlarge the text of blog posts, while leaving the rest of the page at its default size.
+A medida que programamos o nosso componente `<BlogPost>`, algumas funcionalidades podem precisar comunicar para cima para o componente pai. Por exemplo, podemos decidir incluir uma funcionalidade de acessibilidade para aumentar o texto das publicações de blogue, enquanto deixamos o resto da página em seu tamanho padrão.
 
-In the parent, we can support this feature by adding a `postFontSize` <span class="options-api">data property</span><span class="composition-api">ref</span>:
+No componente pai, podemos suportar esta funcionalidade adicionando uma <span class="options-api">propriedade de dados</span><span class="composition-api">referência</span> `postFontSize`:
 
 <div class="options-api">
 
@@ -334,7 +334,7 @@ const postFontSize = ref(1)
 
 </div>
 
-Which can be used in the template to control the font size of all blog posts:
+Que pode ser utilizada no modelo de marcação para controlar o tamanho da fonte de todas as publicações de blogue:
 
 ```vue-html{1,7}
 <div :style="{ fontSize: postFontSize + 'em' }">
@@ -346,10 +346,10 @@ Which can be used in the template to control the font size of all blog posts:
 </div>
 ```
 
-Now let's add a button to the `<BlogPost>` component's template:
+Agora vamos adicionar um botão para o modelo de marcação do componente `<BlogPost>`:
 
 ```vue{5}
-<!-- BlogPost.vue, omitting <script> -->
+<!-- BlogPost.vue, omitindo <script> -->
 <template>
   <div class="blog-post">
     <h4>{{ title }}</h4>
@@ -358,7 +358,7 @@ Now let's add a button to the `<BlogPost>` component's template:
 </template>
 ```
 
-The button doesn't do anything yet - we want clicking the button to communicate to the parent that it should enlarge the text of all posts. To solve this problem, components provide a custom events system. The parent can choose to listen to any event on the child component instance with `v-on` or `@`, just as we would with a native DOM event:
+O botão ainda não faz nada - queremos clicar no botão para comunicar para o componente pai que ele deveria aumentar o texto de todas publicações. Para resolver este problema, os componentes oferecem um sistema de eventos personalizados. O componente pai pode escolher ouvir qualquer evento sobre a instância de componente filho com a `v-on` ou `@`, tal como faria com um evento de DOM nativo:
 
 ```vue-html{3}
 <BlogPost
@@ -367,10 +367,10 @@ The button doesn't do anything yet - we want clicking the button to communicate 
  />
 ```
 
-Then the child component can emit an event on itself by calling the built-in [**`$emit`** method](/api/component-instance#emit), passing the name of the event:
+Então o componente filho pode emitir um evento sobre si mesmo chamando o [método **`$emit`**](/api/component-instance#emit) embutido, passando o nome do evento:
 
 ```vue{5}
-<!-- BlogPost.vue, omitting <script> -->
+<!-- BlogPost.vue, omitindo <script> -->
 <template>
   <div class="blog-post">
     <h4>{{ title }}</h4>
@@ -379,7 +379,7 @@ Then the child component can emit an event on itself by calling the built-in [**
 </template>
 ```
 
-Thanks to the `@enlarge-text="postFontSize += 0.1"` listener, the parent will receive the event and update the value of `postFontSize`.
+Graças ao ouvinte `@enlarge-text="postFontSize += 0.1"`, o componente pai receberá o evento e atualizará o valor de `postFontSize`.
 
 <div class="options-api">
 
@@ -419,11 +419,11 @@ defineEmits(['enlarge-text'])
 
 </div>
 
-This documents all the events that a component emits and optionally [validates them](/guide/components/events#events-validation). It also allows Vue to avoid implicitly applying them as native listeners to the child component's root element.
+Isto documenta todos os eventos que um componente emite e [valida-os](/guide/components/events#events-validation) opcionalmente. Ela também permite a Vue evitar aplicá-los implicitamente como ouvintes nativos para o elemento de raiz do componente filho.
 
 <div class="composition-api">
 
-Similar to `defineProps`, `defineEmits` is only usable in `<script setup>` and doesn't need to be imported. It returns an `emit` function that is equivalent to the `$emit` method. It can be used to emit events in the `<script setup>` section of a component, where `$emit` isn't directly accessible:
+Semelhante a `defineProps`, a `defineEmits` só é utilizável em `<script setup>` e não precisa ser importada. Ela retorna uma função `emit` que é equivalente ao método `$emit`. Ela pode ser utilizada para emitir eventos na secção `<script setup>` de um componente, onde `$emit` não é diretamente acessível:
 
 ```vue
 <script setup>
@@ -433,9 +433,9 @@ emit('enlarge-text')
 </script>
 ```
 
-See also: [Typing Component Emits](/guide/typescript/composition-api#typing-component-emits) <sup class="vt-badge ts" />
+Consulte também: [Tipando Emissões de Componente](/guide/typescript/composition-api#typing-component-emits) <sup class="vt-badge ts" />
 
-If you are not using `<script setup>`, you can declare emitted events using the `emits` option. You can access the `emit` function as a property of the setup context (passed to `setup()` as the second argument):
+Se não estiveres utilizando `<script setup>`, podes declarar os eventos emitidos utilizando a opção `emits`. Tu podes acessar a função `emit` como uma propriedade do contexto de configuração (passada para `setup()` como segundo argumento):
 
 ```js
 export default {
@@ -448,11 +448,11 @@ export default {
 
 </div>
 
-That's all you need to know about custom component events for now, but once you've finished reading this page and feel comfortable with its content, we recommend coming back later to read the full guide on [Custom Events](/guide/components/events).
+É tudo que precisas saber a respeito de eventos de componentes personalizados por agora, mas assim que terminares a leitura desta página e estiveres confortável com o seu conteúdo, recomendamos retornar à leitura do guia completo sobre [Eventos Personalizados](/guide/components/events).
 
-## Content Distribution with Slots {#content-distribution-with-slots}
+## Distribuição de Conteúdo com Slots {#content-distribution-with-slots}
 
-Just like with HTML elements, it's often useful to be able to pass content to a component, like this:
+Tal como com elementos de HTML, é muitas vezes útil ser capaz de passar conteúdo para um componente, desta maneira:
 
 ```vue-html
 <AlertBox>
@@ -460,13 +460,13 @@ Just like with HTML elements, it's often useful to be able to pass content to a 
 </AlertBox>
 ```
 
-Which might render something like:
+Que pode interpretar alguma coisa tipo:
 
-:::danger This is an Error for Demo Purposes
-Something bad happened.
+:::danger Isto é um Erro para Fins de Demonstração
+Something bad happened. (Alguma coisa má aconteceu).
 :::
 
-This can be achieved using Vue's custom `<slot>` element:
+Isto pode ser alcançado utilizando o elemento `<slot>` personalizado da Vue:
 
 ```vue{4}
 <template>
@@ -483,7 +483,7 @@ This can be achieved using Vue's custom `<slot>` element:
 </style>
 ```
 
-As you'll see above, we use the `<slot>` as a placeholder where we want the content to go – and that's it. We're done!
+Como verás acima, utilizamos o `<slot>` como um espaço reservado onde queremos que conteúdo esteja – e é isto. Terminamos! 
 
 <div class="options-api">
 
@@ -496,11 +496,11 @@ As you'll see above, we use the `<slot>` as a placeholder where we want the cont
 
 </div>
 
-That's all you need to know about slots for now, but once you've finished reading this page and feel comfortable with its content, we recommend coming back later to read the full guide on [Slots](/guide/components/slots).
+É tudo o que precisas saber a respeito das ranhuras por agora, mas uma vez terminada a leitura desta página e estiveres confortável com o seu conteúdo, recomendamos voltar mais tarde para ler o guia completo sobre [Ranhuras](/guide/components/slots).
 
-## Dynamic Components {#dynamic-components}
+## Componentes Dinâmicos {#dynamic-components}
 
-Sometimes, it's useful to dynamically switch between components, like in a tabbed interface:
+Algumas vezes é útil alternar entre componentes dinamicamente, como em uma interface separada:
 
 <div class="options-api">
 
@@ -513,12 +513,12 @@ Sometimes, it's useful to dynamically switch between components, like in a tabbe
 
 </div>
 
-The above is made possible by Vue's `<component>` element with the special `is` attribute:
+O que está acima é tornado possível pelo elemento `<component>` da Vue com o atributo especial `is`:
 
 <div class="options-api">
 
 ```vue-html
-<!-- Component changes when currentTab changes -->
+<!-- O componente muda quando `currentTab` mudar -->
 <component :is="currentTab"></component>
 ```
 
@@ -526,39 +526,39 @@ The above is made possible by Vue's `<component>` element with the special `is` 
 <div class="composition-api">
 
 ```vue-html
-<!-- Component changes when currentTab changes -->
+<!-- O componente muda quando `currentTab` mudar -->
 <component :is="tabs[currentTab]"></component>
 ```
 
 </div>
 
-In the example above, the value passed to `:is` can contain either:
+No exemplo acima, o valor passado para `:is` pode conter tanto:
 
-- the name string of a registered component, OR
-- the actual imported component object
+- a sequência de caracteres de nome de um componente registado, OU
+- o objeto de componente importado
 
-You can also use the `is` attribute to create regular HTML elements.
+Tu também podes utilizar o atributo `is` para criar elementos de HTML regulares.
 
-When switching between multiple components with `<component :is="...">`, a component will be unmounted when it is switched away from. We can force the inactive components to stay "alive" with the built-in [`<KeepAlive>` component](/guide/built-ins/keep-alive).
+Quando estiveres alternando entre vários componentes com `<component :is="...">`, um componente será desmontado quando ele for alternado para fora. Nós podemos forçar os componentes inativos a manterem-se "vivos" com o [componente `<KeepAlive>`](/guide/built-ins/keep-alive) embutido.
 
-## DOM Template Parsing Caveats {#dom-template-parsing-caveats}
+## Advertências de Analise de Modelo de Marcação de DOM
 
-If you are writing your Vue templates directly in the DOM, Vue will have to retrieve the template string from the DOM. This leads to some caveats due to browsers' native HTML parsing behavior.
+Se estiveres escrevendo os teus modelos de marcação de Vue diretamente no DOM, a Vue precisará recuperar a sequência de caracteres de modelo de marcação a partir do DOM. Isto leva para algumas advertências devido ao comportamento de analise de HTML nativo do navegador.
 
 :::tip
-It should be noted that the limitations discussed below only apply if you are writing your templates directly in the DOM. They do NOT apply if you are using string templates from the following sources:
+Deve ser notado que as limitações discutidas abaixo só se aplicam se estiveres escrevendo os teus modelos de marcação diretamente no DOM. Elas não se aplicam se estiveres utilizando modelos de marcação de sequências de caracteres das seguintes fontes:
 
-- Single-File Components
-- Inlined template strings (e.g. `template: '...'`)
+- Componentes de Ficheiro Único
+- Sequências de Caracteres de Modelo de Marcação (por exemplo, `template: '...'`)
 - `<script type="text/x-template">`
-  :::
+:::
 
-### Case Insensitivity {#case-insensitivity}
+### Insensibilidade de Caixa {#case-insensitivity}
 
-HTML tags and attribute names are case-insensitive, so browsers will interpret any uppercase characters as lowercase. That means when you’re using in-DOM templates, PascalCase component names and camelCased prop names or `v-on` event names all need to use their kebab-cased (hyphen-delimited) equivalents:
+Os marcadores de HTML e nomes de atributos são insensíveis a caixa, então os navegadores interpretarão quaisquer caracteres maiúsculos como minúsculos. Isto significa que quando estiveres utilizando modelos de marcação no DOM, nomes de componente em "PascalCase" e nomes de propriedades em "camelCase" ou todos os nomes de eventos de `v-on` precisam utilizar os seus equivalentes em "kebab-case" (delimitado por hífen):
 
 ```js
-// camelCase in JavaScript
+// "camelCase" em JavaScript
 const BlogPost = {
   props: ['postTitle'],
   emits: ['updatePost'],
@@ -569,46 +569,46 @@ const BlogPost = {
 ```
 
 ```vue-html
-<!-- kebab-case in HTML -->
+<!-- "kebab-case" em HTML -->
 <blog-post post-title="hello!" @update-post="onUpdatePost"></blog-post>
 ```
 
-### Self Closing Tags {#self-closing-tags}
+### Marcadores de Auto-Fechamento {#self-closing-tags}
 
-We have been using self-closing tags for components in previous code samples:
+Nós temos estado a utilizar marcadores de auto-fechamento para os componentes nos exemplos de código anterior:
 
 ```vue-html
 <MyComponent />
 ```
 
-This is because Vue's template parser respects `/>` as an indication to end any tag, regardless of its type.
+Isto é porque o analisador de modelo da Vue respeita a `/>` como uma indicação para o final de qualquer marcador, independente o seu tipo.
 
-In DOM templates, however, we must always include explicit closing tags:
+Nos modelos de marcação de DOM, no entanto, devemos sempre incluir explicito os marcadores de fechamento:
 
 ```vue-html
 <my-component></my-component>
 ```
 
-This is because the HTML spec only allows [a few specific elements](https://html.spec.whatwg.org/multipage/syntax.html#void-elements) to omit closing tags, the most common being `<input>` and `<img>`. For all other elements, if you omit the closing tag, the native HTML parser will think you never terminated the opening tag. For example, the following snippet:
+Isto é porque a especificação de HTML só permite [alguns elementos específicos](https://html.spec.whatwg.org/multipage/syntax.html#void-elements) omitirem os marcadores de fechamento, os mais comuns sendo `<input>` e `<img>`. Para todos os outros elementos, se omitires o marcador de fechamento, o analisador de HTML nativo pensará que nunca terminaste o marcador de abertura. Por exemplo, o seguinte fragmento:
 
 ```vue-html
-<my-component /> <!-- we intend to close the tag here... -->
+<my-component /> <!-- cá nós tencionamos fechar o marcador... -->
 <span>hello</span>
 ```
 
-will be parsed as:
+será analisado como:
 
 ```vue-html
 <my-component>
   <span>hello</span>
-</my-component> <!-- but the browser will close it here. -->
+</my-component> <!-- mas o navegador irá fechar ele aqui. -->
 ```
 
-### Element Placement Restrictions {#element-placement-restrictions}
+### Restrições de Colocação de Elemento {#element-placement-restrictions}
 
-Some HTML elements, such as `<ul>`, `<ol>`, `<table>` and `<select>` have restrictions on what elements can appear inside them, and some elements such as `<li>`, `<tr>`, and `<option>` can only appear inside certain other elements.
+Alguns elementos de HTML, tais como `<ul>`, `<ol>`, `<table>` e `<select>` têm restrições sobre quais elementos podem aparecer dentro deles, e alguns elementos tais como `<li>`, `<tr>`, e `<option>` só podem aparecer dentro certos elementos.
 
-This will lead to issues when using components with elements that have such restrictions. For example:
+Isto levará a problemas quando estiveres utilizando componentes com elementos que têm tais restrições. Por exemplo:
 
 ```vue-html
 <table>
@@ -616,7 +616,7 @@ This will lead to issues when using components with elements that have such rest
 </table>
 ```
 
-The custom component `<blog-post-row>` will be hoisted out as invalid content, causing errors in the eventual rendered output. We can use the special [`is` attribute](/api/built-in-special-attributes#is) as a workaround:
+O componente personalizado `<blog-post-row>` será levantado como conteúdo inválido, causando erros no resultado interpretado final. Nós podemos utilizar o [atributo `is`](/api/built-in-special-attributes#is) especial como uma solução:
 
 ```vue-html
 <table>
@@ -625,9 +625,9 @@ The custom component `<blog-post-row>` will be hoisted out as invalid content, c
 ```
 
 :::tip
-When used on native HTML elements, the value of `is` must be prefixed with `vue:` in order to be interpreted as a Vue component. This is required to avoid confusion with native [customized built-in elements](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example).
+Quando utilizado sobre elementos de HTML nativo, o valor de `is` deve ser prefixado com `vue:` para ser interpretada como um componente de Vue. Isto é necessário para evitar confusão com os [elementos embutidos personalizados](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example) nativo.
 :::
 
-That's all you need to know about DOM template parsing caveats for now - and actually, the end of Vue's _Essentials_. Congratulations! There's still more to learn, but first, we recommend taking a break to play with Vue yourself - build something fun, or check out some of the [Examples](/examples/) if you haven't already.
+É tudo o que precisas saber a respeito das advertências de analise de modelo de marcação de DOM por agora - e de fato, o fim dos _Essenciais_ da Vue. Parabéns! Há ainda mais para aprender, mas primeiro, recomendamos dar uma pausa para brincar com a Vue sozinho - construa alguma coisa divertida, ou consulte alguns dos [Exemplos](/examples/) se ainda não o fizeste.
 
-Once you feel comfortable with the knowledge you've just digested, move on with the guide to learn more about components in depth.
+Uma vez que estiveres confortável com o conhecimento já assimilaste, siga no guia para aprenderes mais a respeito de componentes em profundidade.
