@@ -37,13 +37,7 @@ onMounted(async () => {
 <template>
   <div class="vuejobs-wrapper">
     <div class="vj-container">
-      <a
-        class="vj-item"
-        v-for="(job, n) in openings"
-        :key="n"
-        :href="job.link"
-        target="_blank"
-      >
+      <a class="vj-item" v-for="(job, n) in openings" :key="n" :href="job.link" target="_blank">
         <div class="vj-company-logo">
           <img
             :src="job.organization.avatar"
@@ -67,13 +61,12 @@ onMounted(async () => {
       </a>
     </div>
     <div class="vj-link">
-      Jobs by
+      Empregos pela
       <a
         href="https://vuejobs.com/?utm_source=vuejs&utm_medium=referral&utm_campaign=jobs_widget&utm_content=bottom_link"
         target="_blank"
-        title="Hire Vue.js developers"
-        >vuejobs.com</a
-      >
+        title="Contrate Programadores de Vue.js"
+      >vuejobs.com</a>
     </div>
   </div>
 </template>
