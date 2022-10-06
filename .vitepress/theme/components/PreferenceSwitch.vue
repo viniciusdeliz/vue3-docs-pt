@@ -23,11 +23,11 @@ const toggleOpen = () => {
 }
 
 const removeOutline = (e: Event) => {
-  ;(e.target as HTMLElement).classList.add('no-outline')
+  ; (e.target as HTMLElement).classList.add('no-outline')
 }
 
 const restoreOutline = (e: Event) => {
-  ;(e.target as HTMLElement).classList.remove('no-outline')
+  ; (e.target as HTMLElement).classList.remove('no-outline')
 }
 
 const toggleCompositionAPI = useToggleFn(
@@ -44,7 +44,7 @@ function useToggleFn(
   className: string
 ) {
   if (typeof localStorage === 'undefined') {
-    return () => {}
+    return () => { }
   }
   const classList = document.documentElement.classList
   return (value = !state.value) => {
@@ -62,35 +62,29 @@ function useToggleFn(
   <div v-if="show" class="preference-switch">
     <button
       class="toggle"
-      aria-label="preference switches toggle"
+      aria-label="Interruptor de Alternar Preferência"
       aria-controls="preference-switches"
       :aria-expanded="isOpen"
       @click="toggleOpen"
       @mousedown="removeOutline"
       @blur="restoreOutline"
     >
-      <span>API Preference</span>
+      <span>Preferência de API</span>
       <VTIconChevronDown class="vt-link-icon" :class="{ open: isOpen }" />
     </button>
     <div id="preference-switches" :hidden="!isOpen" :aria-hidden="!isOpen">
       <div class="switch-container">
-        <label class="options-label" @click="toggleCompositionAPI(false)"
-          >Options</label
-        >
+        <label class="options-label" @click="toggleCompositionAPI(false)">Opções</label>
         <VTSwitch
           class="api-switch"
-          aria-label="prefer composition api"
+          aria-label="Preferir a API de Composição"
           :aria-checked="preferComposition"
           @click="toggleCompositionAPI()"
         />
-        <label
-          class="composition-label"
-          @click="toggleCompositionAPI(true)"
-          >Composition</label
-        >
+        <label class="composition-label" @click="toggleCompositionAPI(true)">Composição</label>
         <a
           class="switch-link"
-          title="About API preference"
+          title="A Respeito da Preferência de API"
           href="/guide/introduction.html#api-styles"
           @click="closeSideBar"
           >?</a
@@ -101,18 +95,17 @@ function useToggleFn(
         <label class="no-sfc-label" @click="toggleSFC(false)">HTML</label>
         <VTSwitch
           class="sfc-switch"
-          aria-label="prefer single file component"
+          aria-label="Preferir Componente de Ficheiro Único"
           :aria-checked="preferSFC"
           @click="toggleSFC()"
         />
         <label class="sfc-label" @click="toggleSFC(true)">SFC</label>
         <a
           class="switch-link"
-          title="About SFC"
+          title="A Respeito de SFC"
           href="/guide/scaling-up/sfc.html"
           @click="closeSideBar"
-          >?</a
-        >
+        >?</a>
       </div>
     </div>
   </div>
