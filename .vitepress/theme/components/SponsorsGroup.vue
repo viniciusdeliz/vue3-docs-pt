@@ -63,10 +63,7 @@ function track(interest?: boolean) {
         @click="track()"
       >
         <picture v-if="img.endsWith('png')">
-          <source
-            type="image/avif"
-            :srcset="`${base}/images/${img.replace(/\.png$/, '.avif')}`"
-          />
+          <source type="image/avif" :srcset="`${base}/images/${img.replace(/\.png$/, '.avif')}`" />
           <img :src="`${base}/images/${img}`" :alt="name" />
         </picture>
         <img v-else :src="`${base}/images/${img}`" :alt="name" />
