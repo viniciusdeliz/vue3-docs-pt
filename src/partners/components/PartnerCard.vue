@@ -39,11 +39,14 @@ const {
         <h3 v-else>{{ name }}</h3>
       </a>
 
-      <p class="region"><Location /> {{ region.join(', ') }}</p>
+      <p class="region">
+        <Location />
+        {{ region.join(', ') }}
+      </p>
 
       <p>{{ intro }}</p>
 
-      <h4 v-if="hero">Proficiencies</h4>
+      <h4 v-if="hero">Proficiências</h4>
       <p v-if="hero">
         <span class="proficiency" v-for="p in proficiencies">{{ p }}</span>
       </p>
