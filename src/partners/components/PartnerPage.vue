@@ -23,9 +23,9 @@ function genMailLink(email: string) {
 <template>
   <div class="partner-page">
     <div class="back">
-      <a href="/partners/all.html"
-        ><VTIconChevronLeft class="icon" />Back to all partners</a
-      >
+      <a href="/partners/all.html"></a>
+        <VTIconChevronLeft class="icon" />Recuar para todos parceiros
+      </a>
     </div>
 
     <PartnerCard hero page :data="p" />
