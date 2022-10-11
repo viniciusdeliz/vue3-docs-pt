@@ -22,12 +22,12 @@ export default {
     }
   },
 
-  // `mounted` is a lifecycle hook which we will explain later
+  // `mounted` é um gatilho de cíclo de vida que explicaremos adiante
   mounted() {
-    // `this` refers to the component instance.
+    // `this` refere-se a instância do componente.
     console.log(this.count) // => 1
 
-    // data can be mutated as well
+    // o dado também pode ser alterado
     this.count = 2
   }
 }
@@ -35,15 +35,15 @@ export default {
 
 [Try it in the Playground](https://play.vuejs.org/#eNpFUNFqhDAQ/JXBpzsoHu2j3B2U/oYPpnGtoetGkrW2iP/eRFsPApthd2Zndilex7H8mqioimu0wY16r4W+Rx8ULXVmYsVSC9AaNafz/gcC6RTkHwHWT6IVnne85rI+1ZLr5YJmyG1qG7gIA3Yd2R/LhN77T8y9sz1mwuyYkXazcQI2SiHz/7iP3VlQexeb5KKjEKEe2lPyMIxeSBROohqxVO4E6yV6ppL9xykTy83tOQvd7tnzoZtDwhrBO2GYNFloYWLyxrzPPOi44WWLWUt618txvASUhhRCKSHgbZt2scKy7HfCujGOqWL9BVfOgyI=)
 
-These instance properties are only added when the instance is first created, so you need to ensure they are all present in the object returned by the `data` function. Where necessary, use `null`, `undefined` or some other placeholder value for properties where the desired value isn't yet available.
+Estas propriedades de instância só são adicionadas quando a instância for criada primeiro, então precisar garantir que elas estão todas presentes no objeto retornado pela função `data`. Onde necessário, utilize `null`, `undefined` ou algum outro valor segurador de lugar para as propriedades onde o valor desejado ainda não está disponível.
 
-It is possible to add a new property directly to `this` without including it in `data`. However, properties added this way will not be able to trigger reactive updates.
+É possível adicionar uma nova propriedade diretamente ao `this` sem incluí-la no `data`. No entanto, propriedades adicionadas desta maneira não serão capazes de acionar atualizações reativas.
 
-Vue uses a `$` prefix when exposing its own built-in APIs via the component instance. It also reserves the prefix `_` for internal properties. You should avoid using names for top-level `data` properties that start with either of these characters.
+A Vue utiliza um prefixo `$` quando está expondo suas próprias APIs embutidas através da instância do componente. Ela também reserva o prefixo `_` para propriedades internas. Tu deves evitar a utilização de nomes para propriedades de `data` de alto nível que comecem com quaisquer destes caracteres.
 
 ### Reactive Proxy vs. Original \* {#reactive-proxy-vs-original}
 
-In Vue 3, data is made reactive by leveraging [JavaScript Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy). Users coming from Vue 2 should be aware of the following edge case:
+Na Vue 3, os dados são feitos reativos influenciando as [Delegações de JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy). Utilizadores chegando da Vue 2 devem estar cientes do seguinte caso extremo:
 
 ```js
 export default {
@@ -61,7 +61,7 @@ export default {
 }
 ```
 
-When you access `this.someObject` after assigning it, the value is a reactive proxy of the original `newObject`. **Unlike in Vue 2, the original `newObject` is left intact and will not be made reactive: make sure to always access reactive state as a property of `this`.**
+Quando acessares `this.someObject` depois de atribuí-lo, o valor é uma delegação reativa do `newObject` original. **Ao contrário da Vue 2, o `newObject` original é deixado intacto e não será tornado reativo: certifica-te de sempre acessar o estado reativo como uma propriedade de `this`**.
 
 </div>
 
@@ -139,7 +139,7 @@ export default {
       count.value++
     }
 
-    // don't forget to expose the function as well.
+    // não esqueça de expor a função também.
     return {
       count,
       increment
@@ -224,9 +224,9 @@ The reactivity system is discussed in more details in the [Reactivity in Depth](
 
 ## Declaring Methods \* {#declaring-methods}
 
-<VueSchoolLink href="https://vueschool.io/lessons/methods-in-vue-3" title="Free Vue.js Methods Lesson"/>
+<VueSchoolLink href="https://vueschool.io/lessons/methods-in-vue-3" title="Aula Gratuita Sobre Métodos de Vue.js"/>
 
-To add methods to a component instance we use the `methods` option. This should be an object containing the desired methods:
+Para adicionar métodos à uma instância de componente utilizamos a opção `methods`. Isto deve ser um objeto contendo os métodos desejados:
 
 ```js{7-11}
 export default {
@@ -241,25 +241,25 @@ export default {
     }
   },
   mounted() {
-    // methods can be called in lifecycle hooks, or other methods!
+    // métodos podem ser chamados nos gatilhos de clico de vida, ou em outros métodos!
     this.increment()
   }
 }
 ```
 
-Vue automatically binds the `this` value for `methods` so that it always refers to the component instance. This ensures that a method retains the correct `this` value if it's used as an event listener or callback. You should avoid using arrow functions when defining `methods`, as that prevents Vue from binding the appropriate `this` value:
+A Vue vincula automaticamente o valor `this` para `methods` para que sempre referir-se a instância de componente. Isto garante que um método preserva o valor `this` correto se for utilizado como um ouvinte de evento ou resposta. Tu deves evitar a utilização de funções em flecha quando estiveres definindo os `methods`, visto que impedi a Vue de vincular o valor `this` apropriado:
 
 ```js
 export default {
   methods: {
     increment: () => {
-      // BAD: no `this` access here!
+      // MAU: nenhum acesso de `this` aqui!
     }
   }
 }
 ```
 
-Just like all other properties of the component instance, the `methods` are accessible from within the component's template. Inside a template they are most commonly used as event listeners:
+Tal como todas as outras propriedades da instância de componente, o `methods` são acessíveis a partir de dentro do modelo de marcação do componente. Dentro de um modelo de marcação são comummente utilizadas como ouvintes de evento:
 
 ```vue-html
 <button @click="increment">{{ count }}</button>
@@ -267,7 +267,7 @@ Just like all other properties of the component instance, the `methods` are acce
 
 [Try it in the Playground](https://play.vuejs.org/#eNplj9EKwyAMRX8l+LSx0e65uLL9hy+dZlTWqtg4BuK/z1baDgZicsPJgUR2d656B2QN45P02lErDH6c9QQKn10YCKIwAKqj7nAsPYBHCt6sCUDaYKiBS8lpLuk8/yNSb9XUrKg20uOIhnYXAPV6qhbF6fRvmOeodn6hfzwLKkx+vN5OyIFwdENHmBMAfwQia+AmBy1fV8E2gWBtjOUASInXBcxLvN4MLH0BCe1i4Q==)
 
-In the example above, the method `increment` will be called when the `<button>` is clicked.
+No exemplo acima, o método `increment` será chamado quando o `<button>` clicado.
 
 </div>
 
@@ -289,7 +289,7 @@ export default {
   },
   methods: {
     mutateDeeply() {
-      // these will work as expected.
+      // estes funcionarão como esperado.
       this.obj.nested.count++
       this.obj.arr.push('baz')
     }
@@ -396,29 +396,29 @@ Reactive objects are [JavaScript Proxies](https://developer.mozilla.org/en-US/do
 
 ### Reactive Proxy vs. Original \*\* {#reactive-proxy-vs-original-1}
 
-It is important to note that the returned value from `reactive()` is a [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) of the original object, which is not equal to the original object:
+É importante notar que o valor retornado da `reactive()` é uma [Delegação](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) do objeto original, a qual não é igual ao objeto original:
 
 ```js
 const raw = {}
 const proxy = reactive(raw)
 
-// proxy is NOT equal to the original.
+// delegação NÃO é igual ao original.
 console.log(proxy === raw) // false
 ```
 
-Only the proxy is reactive - mutating the original object will not trigger updates. Therefore, the best practice when working with Vue's reactivity system is to **exclusively use the proxied versions of your state**.
+Apenas a delegação é reativa - a mutação do objeto original não acionará atualizações. Portanto, a boa prática quando estiveres trabalhando com o sistema de reatividade da Vue é **utilizar exclusivamente as versões delegadas do teu estado**.
 
-To ensure consistent access to the proxy, calling `reactive()` on the same object always returns the same proxy, and calling `reactive()` on an existing proxy also returns that same proxy:
+Para garantir o acesso consistente à delegação, a chamada de `reactive()` sobre o mesmo objeto sempre retorna a mesma delegação, e a chamada `reactive()` sobre uma delegação existente também retorna aquela mesma delegação:
 
 ```js
-// calling reactive() on the same object returns the same proxy
+// a chamada de reactive() sobre o mesmo objeto retorna a mesma delegação
 console.log(reactive(raw) === proxy) // true
 
-// calling reactive() on a proxy returns itself
+// a chamada de reactive() sobre uma delegação retorna a si mesma
 console.log(reactive(proxy) === proxy) // true
 ```
 
-This rule applies to nested objects as well. Due to deep reactivity, nested objects inside a reactive object are also proxies:
+Este regra também aplica-se aos objetos encaixados. Devido a reatividade profunda, os objetos encaixados dentro de um objeto reativo também são delegações:
 
 ```js
 const proxy = reactive({})
@@ -452,7 +452,7 @@ The `reactive()` API has a few limitations:
 
    // count is disconnected from state.count when destructured.
    let { count } = state
-   // does not affect original state
+   // não afeta o estado original
    count++
 
    // the function receives a plain number and
@@ -481,14 +481,14 @@ state.count = 1
 console.log(count.value) // 1
 ```
 
-If a new ref is assigned to a property linked to an existing ref, it will replace the old ref:
+Se uma nova referência for atribuida à uma propridade ligada à uma referência existente, substituirá a antiga referência:
 
 ```js
 const otherCount = ref(2)
 
 state.count = otherCount
 console.log(state.count) // 2
-// original ref is now disconnected from state.count
+// a referência original agora está desconectada do `state.count`
 console.log(count.value) // 1
 ```
 
@@ -500,11 +500,11 @@ Unlike reactive objects, there is **no** unwrapping performed when the ref is ac
 
 ```js
 const books = reactive([ref('Vue 3 Guide')])
-// need .value here
+// precisa da `.value`
 console.log(books[0].value)
 
 const map = reactive(new Map([['count', ref(0)]]))
-// need .value here
+// precisa da `.value`
 console.log(map.get('count').value)
 ```
 
@@ -557,7 +557,8 @@ This is just a convenience feature of text interpolation and is equivalent to <c
 
 ### Stateful Methods \* {#stateful-methods}
 
-In some cases, we may need to dynamically create a method function, for example creating a debounced event handler:
+
+Em alguns casos, podemos precisar criar dinamicamente uma função de método, por exemplo criando um manipulador de evento "debounced":
 
 ```js
 import { debounce } from 'lodash-es'
@@ -566,30 +567,30 @@ export default {
   methods: {
     // Debouncing with Lodash
     click: debounce(function () {
-      // ... respond to click ...
+     // ... responde ao clique ...
     }, 500)
   }
 }
 ```
 
-However, this approach is problematic for components that are reused because a debounced function is **stateful**: it maintains some internal state on the elapsed time. If multiple component instances share the same debounced function, they will interfere with one another.
+No entanto, esta abordagem é problemática porque os componentes que são reutilizados porque uma função "debounced" **tem estado**: ela mantém algum estado interno sobre o tempo decorrido. Se várias instância de componente partilharem a mesma função "debounced", interferirão umas as outras.
 
-To keep each component instance's debounced function independent of the others, we can create the debounced version in the `created` lifecycle hook:
+Para manter cada função "debounced" da instância do componente independente das outras, podemos criar uma versão "debounced" no gatilho de ciclo de vida `created`:
 
 ```js
 export default {
   created() {
-    // each instance now has its own copy of debounced handler
+    // agora cada instância tem sua própria cópia do manipulador "debounced"
     this.debouncedClick = _.debounce(this.click, 500)
   },
   unmounted() {
-    // also a good idea to cancel the timer
-    // when the component is removed
+    // também é uma boa ideia cancelar o temporizador
+    // quando o componente for removido
     this.debouncedClick.cancel()
   },
   methods: {
     click() {
-      // ... respond to click ...
+     // ... responde ao clique ...
     }
   }
 }
