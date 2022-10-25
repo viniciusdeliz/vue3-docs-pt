@@ -14,7 +14,8 @@ import ThemeContact from './ThemeContact.vue'
     <ThemeList />
 
     <ThemeContact>
-      Want to feature your themes here? <a class="link" href="mailto:evan@vuejs.org?subject=Theme+affiliation">Contact us!</a>
+      Deseja mencionar os teus temas aqui?
+      <a class="link" href="mailto:evan@vuejs.org?subject=Theme+affiliation">Contacte-nos!</a>
     </ThemeContact>
   </div>
 </template>
