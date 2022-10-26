@@ -20,7 +20,7 @@ Com uma configuração baseada na Vite, o servidor de desenvolvimento e o empaco
 
 - If using SFCs, use the [`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/vue-tsc) utility for command line type checking and type declaration generation. `vue-tsc` is a wrapper around `tsc`, TypeScript's own command line interface. It works largely the same as `tsc` except that it supports Vue SFCs in addition to TypeScript files. You can run `vue-tsc` in watch mode in parallel to the Vite dev server, or use a Vite plugin like [vite-plugin-checker](https://vite-plugin-checker.netlify.app/) which runs the checks in a separate worker thread.
 
-- A Interface de Linha de Comando da Vue também fornece suporte a TypeScript, mas não é mais recomendado. Consulte as [notas abaixo]()
+- A Interface de Linha de Comando da Vue também fornece suporte a TypeScript, mas não é mais recomendado. Consulte as [notas abaixo](#nota-sobre-a-linha-de-comando-de-vue-e-o-ts-loader)
 
 ### IDE Support {#ide-support}
 
