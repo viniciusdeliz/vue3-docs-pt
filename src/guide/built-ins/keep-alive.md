@@ -4,7 +4,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 
 # KeepAlive {#keepalive}
 
-`<KeepAlive>` is a built-in component that allows us to conditionally cache component instances when dynamically switching between multiple components.
+O `<KeepAlive>` é um componente embutido que permite-nos cachear condicionalmente as instâncias de componente quando mudamos dinamicamente entre vários componentes.
 
 ## Basic Usage {#basic-usage}
 
@@ -16,22 +16,22 @@ In the Component Basics chapter, we introduced the syntax for [Dynamic Component
 
 By default, an active component instance will be unmounted when switching away from it. This will cause any changed state it holds to be lost. When this component is displayed again, a new instance will be created with only the initial state.
 
-In the example below, we have two stateful components - A contains a counter, while B contains a message synced with an input via `v-model`. Try updating the state of one of them, switch away, and then switch back to it:
+No exemplo abaixo, temos dois componentes com conteúdo - (A) contém um contador, enquando (B) contém uma messagem síncronizada com uma entrada através `v-model`. Tente atualizar o estado de um deles, mude para outro, e então mude de volta para ele: 
 
 <SwitchComponent />
 
-You'll notice that when switched back, the previous changed state would have been reset.
+Notarás que quando mudado de volta, o anterior estado mudado teria sido reiniciado.
 
-Creating fresh component instance on switch is normally useful behavior, but in this case, we'd really like the two component instances to be preserved even when they are inactive. To solve this problem, we can wrap our dynamic component with the `<KeepAlive>` built-in component:
+A criação de nova instância de componente na troca é um comportamente normalmente útil, mas neste caso, gostariamos muito que as duas instâncias de componente sejam preservadas mesmo quando estiverem inativas. Para solucionar este problema, podemos envolver o nosso componente dinâmico com o componente embutido `<KeepAlive>`:
 
 ```vue-html
-<!-- Inactive components will be cached! -->
+<!-- Os componentes inativos serão cacheados! -->
 <KeepAlive>
   <component :is="activeComponent" />
 </KeepAlive>
 ```
 
-Now, the state will be persisted across component switches:
+Agora, o estado será persistido através das mudanças de componente:
 
 <SwitchComponent use-KeepAlive />
 
@@ -52,20 +52,20 @@ When used in [DOM templates](/guide/essentials/component-basics#dom-template-par
 
 ## Include / Exclude {#include-exclude}
 
-By default, `<KeepAlive>` will cache any component instance inside. We can customize this behavior via the `include` and `exclude` props. Both props can be a comma-delimited string, a `RegExp`, or an array containing either types:
+Por padrão, `<KeepAlive>` cacheará qualquer instância de componente no lado de dentro. Nós podemos personalizar este comportamento através das propriedades `include` e `exclude`. Ambas propriedades podem ser uma sequência de caracteres delimitada por vírgula, uma `RegExp` (Expressão Regular), ou arranjo contendo quaisquer tipos:
 
 ```vue-html
-<!-- comma-delimited string -->
+<!-- sequência de caracteres delimitada por vírgula -->
 <KeepAlive include="a,b">
   <component :is="view" />
 </KeepAlive>
 
-<!-- regex (use `v-bind`) -->
+<!-- expressão regular (ou regex) (utilize `v-bind`) -->
 <KeepAlive :include="/a|b/">
   <component :is="view" />
 </KeepAlive>
 
-<!-- Array (use `v-bind`) -->
+<!-- arranjo (ou array) (utilize `v-bind`) -->
 <KeepAlive :include="['a', 'b']">
   <component :is="view" />
 </KeepAlive>
@@ -73,9 +73,7 @@ By default, `<KeepAlive>` will cache any component instance inside. We can custo
 
 The match is checked against the component's [`name`](/api/options-misc#name) option, so components that need to be conditionally cached by `KeepAlive` must explicitly declare a `name` option.
 
-:::tip
-Since version 3.2.34, a single-file component using `<script setup>` will automatically infer its `name` option based on the filename, removing the need to manually declare the name.
-:::
+## Máximo de Instâncias Cacheadas
 
 ## Max Cached Instances {#max-cached-instances}
 
@@ -89,7 +87,7 @@ We can limit the maximum number of component instances that can be cached via th
 
 ## Lifecycle of Cached Instance {#lifecycle-of-cached-instance}
 
-When a component instance is removed from the DOM but is part of a component tree cached by `<KeepAlive>`, it goes into a **deactivated** state instead of being unmounted. When a component instance is inserted into the DOM as part of a cached tree, it is **activated**.
+Quando uma instância de componente for removida do DOM mas for parte de uma árvore de componente cacheada pelo  `<KeepAlive>`, ele entra em um estado **desativado** no lugar de ser desmontada. Quando uma instância de componente for inserida no DOM como parte de uma árvore cacheada, ele é **ativado**.
 
 <div class="composition-api">
 
@@ -100,13 +98,13 @@ A kept-alive component can register lifecycle hooks for these two states using [
 import { onActivated, onDeactivated } from 'vue'
 
 onActivated(() => {
-  // called on initial mount
-  // and every time it is re-inserted from the cache
+  // chamada na montagem inicial
+  // e toda vez que ela for inserida novamente do cache
 })
 
 onDeactivated(() => {
-  // called when removed from the DOM into the cache
-  // and also when unmounted
+  // chamada quando removida do DOM para o cache
+  // e tamém quando desmontada
 })
 </script>
 ```
@@ -119,26 +117,26 @@ A kept-alive component can register lifecycle hooks for these two states using [
 ```js
 export default {
   activated() {
-    // called on initial mount
-    // and every time it is re-inserted from the cache
+    // chamada na montagem inicial
+    // e toda vez que ela for inserida novamente do cache
   },
   deactivated() {
-    // called when removed from the DOM into the cache
-    // and also when unmounted
+    // chamada quando removida do DOM para o cache
+    // e tamém quando desmontada
   }
 }
 ```
 
 </div>
 
-Note that:
+Nota que:
 
-- <span class="composition-api">`onActivated`</span><span class="options-api">`activated`</span> is also called on mount, and <span class="composition-api">`onDeactivated`</span><span class="options-api">`deactivated`</span> on unmount.
+- <span class="composition-api">`onActivated`</span><span class="options-api">`activated`</span> é também chamada na montagem, e <span class="composition-api">`onDeactivated`</span><span class="options-api">`deactivated`</span> na desmontagem.
 
 - Both hooks work for not only the root component cached by `<KeepAlive>`, but also descendant components in the cached tree.
 
 ---
 
-**Related**
+**Relacionado a**
 
 - [`<KeepAlive>` API reference](/api/built-in-components#keepalive)
