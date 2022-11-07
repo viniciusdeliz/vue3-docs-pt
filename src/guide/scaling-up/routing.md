@@ -2,28 +2,28 @@
 
 ## Client-Side vs. Server-Side Routing {#client-side-vs-server-side-routing}
 
-Routing on the server side means the server sending a response based on the URL path that the user is visiting. When we click on a link in a traditional server-rendered web app, the browser receives an HTML response from the server and reloads the entire page with the new HTML.
+O roteamento no lado do servidor significa que o servidor envia uma resposta baseada no caminho da URL que o utilizador está visitando. Quando clicamos sobre uma ligação em uma aplicação de web interpretada no servidor tradicional, o navegador recebe uma resposta de HTML do servidor e recarrega a página inteira com o novo HTML.
 
-In a [Single-Page Application](https://developer.mozilla.org/en-US/docs/Glossary/SPA) (SPA), however, the client-side JavaScript can intercept the navigation, dynamically fetch new data, and update the current page without full page reloads. This typically results in a more snappy user experience, especially for use cases that are more like actual "applications", where the user is expected to perform many interactions over a long period of time.
+Em uma [Aplicação de Página Única](https://developer.mozilla.org/en-US/docs/Glossary/SPA) (SPA, sigla em Inglês), todavia, o JavaScript no lado do cliente pode intercetar a navegação, pedir novos dados dinamicamente, e atualizar a página atual sem recarregamentos completos da página. Isto normalmente resulta em uma experiência de utilizador mais elegante, especialmente para os casos de uso que são mais como "aplicações" de verdade, onde o utilizador é esperado realizar muitas interações sobre um longo período de tempo.
 
-In such SPAs, the "routing" is done on the client side, in the browser. A client-side router is responsible for managing the application's rendered view using browser APIs such as [History API](https://developer.mozilla.org/en-US/docs/Web/API/History) or the [`hashchange` event](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event).
+Em tais SPAs, o "roteamento" é feito no lado do cliente, no navegador. Um roteador do lado do cliente é responsável pela gestão da visão interpretada da aplicação usando as APIs do navegador tais como [API de History](https://developer.mozilla.org/en-US/docs/Web/API/History) ou o [evento `hashchange`](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event).
 
 ## Official Router {#official-router}
 
 <!-- TODO update links -->
 <div>
-  <VueSchoolLink href="https://vueschool.io/courses/vue-router-4-for-everyone" title="Free Vue Router Course">
-    Watch a Free Video Course on Vue School
+  <VueSchoolLink href="https://vueschool.io/courses/vue-router-4-for-everyone" title="Curso Gratuito de Vue Router">
+    Assista um Curso Gratuito na Vue School
   </VueSchoolLink>
 </div>
 
-Vue is well-suited for building SPAs. For most SPAs, it's recommended to use the officially-supported [Vue Router library](https://github.com/vuejs/router). For more details, see Vue Router's [documentation](https://router.vuejs.org/).
+Para a maioria das Aplicações de Página Única, é recomendado usar a [biblioteca vue-router](https://github.com/vuejs/router) suportada oficialmente. Para mais detalhes, consulta a [documentação da Vue Router](https://router.vuejs.org/).
 
 ## Simple Routing from Scratch {#simple-routing-from-scratch}
 
 If you only need very simple routing and do not wish to involve a full-featured router library, you can do so with [Dynamic Components](/guide/essentials/component-basics#dynamic-components) and update the current component state by listening to browser [`hashchange` events](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event) or using the [History API](https://developer.mozilla.org/en-US/docs/Web/API/History).
 
-Here's a bare-bone example:
+Cá está um exemplo simples:
 
 <div class="composition-api">
 
