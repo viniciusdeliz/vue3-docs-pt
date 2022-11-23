@@ -127,7 +127,6 @@ Se o valor fornecido for uma referência, ela será injetada como está e **não
 
 [Full provide + inject Example with Reactivity](https://play.vuejs.org/#eNqFUUFugzAQ/MrKF1IpxfeIVKp66Kk/8MWFDXYFtmUbpArx967BhURRU9/WOzO7MzuxV+fKcUB2YlWovXYRAsbBvQije2d9hAk8Xo7gvB11gzDDxdseCuIUG+ZN6a7JjZIvVRIlgDCcw+d3pmvTglz1okJ499I0C3qB1dJQT9YRooVaSdNiACWdQ5OICj2WwtTWhAg9hiBbhHNSOxQKu84WT8LkNQ9FBhTHXyg1K75aJHNUROxdJyNSBVBp44YI43NvG+zOgmWWYGt7dcipqPhGZEe2ef07wN3lltD+lWN6tNkV/37+rdKjK2rzhRTt7f3u41xhe37/xJZGAL2PLECXa9NKdD/a6QTTtGnP88LgiXJtYv4BaLHhvg==)
 
-Again, if not using `<script setup>`, `inject()` should only be called synchronously inside `setup()`:
 Novamente, se não estiveres utilizando `<script setup>`, `inject()` deve apenas ser chamada de maneira síncrona dentro de `setup()`:
 
 ```js
@@ -156,7 +155,6 @@ export default {
 }
 ```
 
-Injections are resolved **before** the component's own state, so you can access injected properties in `data()`:
 As injeções são resolvidas **antes** do estado do próprio componente, assim podes acessar as propriedades injetas na `data()`:
 
 ```js
@@ -317,7 +315,7 @@ export default {
 
 The `computed()` function is typically used in Composition API components, but can also be used to complement certain use cases in Options API. You can learn more about its usage by reading the [Reactivity Fundamentals](/guide/essentials/reactivity-fundamentals) and [Computed Properties](/guide/essentials/computed) with the API Preference set to Composition API.
 
-:::warning Configuração Temporária Requerida
+:::warning Configuração Temporária Obrigatória
 A utilização acima requer a definição `app.config.unwrapInjectedRef = true` para fazer as injeções desembrulharem automaticamente as referências computadas. Isto tornar-se-á o comportamento padrão na Vue 3.3 e esta configuração é introduzida temporariamente para evitar rutura. Não mais será necessária depois da versão 3.3.
 :::
 
