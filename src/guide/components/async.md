@@ -84,7 +84,7 @@ const AdminPage = defineAsyncComponent(() =>
 
 ## Loading and Error States {#loading-and-error-states}
 
-Operações assíncronas inevitavelmente envolvem estados de erro e carregamento - a `defineAsyncComponent()` suporta a manipulação destes estados através de opções avançadas:
+Operações assíncronas inevitavelmente envolvem carregamento e estados de erro - a `defineAsyncComponent()` suporta a manipulação destes estados através de opções avançadas:
 
 ```js
 const AsyncComp = defineAsyncComponent({
