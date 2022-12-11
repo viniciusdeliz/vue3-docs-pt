@@ -423,7 +423,7 @@ defineProps({
 })
 ```
 
-:::tip
+:::tip Dica
 O código dentro argumento de `defineProps()` **não pode acessar outras variáveis declaradas na `<script setup>`**, porque a expressão inteira é movida para um escopo da função externa quando compilado.
 :::
 
@@ -499,7 +499,7 @@ If using [Type-based props declarations](/api/sfc-script-setup#type-only-props-e
 </div>
 <div class="options-api">
 
-::: tip Nota
+:::tip Nota
 Nota que as propriedades são validadas **antes** da instância do componente ser criada, assim as propriedades da instância (por exemplo, `data`, `computed`, etc) não estarão disponíveis dentro das funções `default` ou `validator`.
 :::
 
