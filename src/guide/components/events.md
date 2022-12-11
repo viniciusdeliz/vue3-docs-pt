@@ -224,7 +224,7 @@ See also: [Typing Component Emits](/guide/typescript/options-api#typing-componen
 
 Although optional, it is recommended to define all emitted events in order to better document how a component should work. It also allows Vue to exclude known listeners from [fallthrough attributes](/guide/components/attrs#v-on-listener-inheritance), avoiding edge cases caused by DOM events manually dispatched by 3rd party code.
 
-:::tip
+:::tip Dica
 Se um evento nativo (por exemplo, `click`) for definido na opção `emits`, o ouvinte agora apenas ouvirá os eventos `click` emitidos pelo componente e não mais responderá aos outros eventos `click` nativos.
 :::
 
