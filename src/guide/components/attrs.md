@@ -29,7 +29,7 @@ O DOM interpretado final seria:
 <button class="large">click me</button>
 ```
 
-### Fundição de `class` e `style`
+### Combinação de `class` e `style` {#class-and-style-merging}
 
 ### `class` and `style` Merging {#class-and-style-merging}
 
