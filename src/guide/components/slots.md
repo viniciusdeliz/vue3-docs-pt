@@ -477,7 +477,7 @@ A utilização de um marcador `<template>` explícito para a ranhura padrão aju
 </template>
 ```
 
-### Exemplo de Lista Fantástica
+### Exemplo de Lista Fantástica {#fancy-list-example}
 
 Tu podes estar perguntando a si mesmo o que seria um bom caso de uso para ranhuras isoladas. Aqui está um exemplo: imagine um componente `<FancyList>` que interpreta uma lista de itens - ele pode resumir a lógica para o carregamento de dados remoto, utilizando os dados para exibir uma lista, ou mesmo funcionalidades avançadas como paginação ou rolamento infinito. No entanto, queremos ser flexíveis a respeito da aparência de cada item e deixar a estilização de cada item para componente pai que está consumindo-o. Assim a utilização desejada se parece com isto:
 
