@@ -91,7 +91,7 @@ A nossa função `$translate` pegará uma sequência de caracteres tal como `gre
 
 See also: [Augmenting Global Properties](/guide/typescript/options-api#augmenting-global-properties) <sup class="vt-badge ts" />
 
-:::tip
+:::tip Dica
 Utilize as propriedades globais cuidadosamente, já que pode rapidamente tornar-se as coisas confusas se muitas propriedades globais injetadas por extensões diferentes forem utilizadas em toda uma aplicação.
 :::
 
