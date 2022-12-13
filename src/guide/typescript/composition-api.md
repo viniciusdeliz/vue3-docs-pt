@@ -136,7 +136,7 @@ The `props` option is more commonly used with the Options API, so you'll find mo
 
 ## Typing Component Emits {#typing-component-emits}
 
-No `<script setup>`, a função `emit` pode também ser tipada utilizando ou a declaração de tempo de execução OU a declaração de tipo:
+No `<script setup>`, o tipo da função `emit` pode também ser atribuindo utilizando ou a declaração de tempo de execução OU a declaração de tipo:
 
 ```vue
 <script setup lang="ts">
@@ -242,7 +242,7 @@ interface Book {
 const book: Book = reactive({ title: 'Vue 3 Guide' })
 ```
 
-:::tip
+:::tip Dica
 Não é recomendado utilizar o argumento genérico da `reactive()` porque o tipo retornado, o qual manipula o desembrulhar da referência encaixada, é diferente do tipo do argumento genérico.
 :::
 
@@ -272,7 +272,7 @@ const double = computed<number>(() => {
 
 ## Typing Event Handlers {#typing-event-handlers}
 
-Quando estiveres lidando com eventos de DOM nativo, pode ser útil tipar o argumento que passamos para o manipulador corretamente. Vamos dar um vista de olhos neste exemplo:
+Quando estiveres lidando com eventos de DOM nativo, pode ser útil definir tipo para o argumento que passamos para o manipulador corretamente. Vamos dar um vista de olhos neste exemplo:
 
 ```vue
 <script setup lang="ts">
@@ -297,7 +297,7 @@ function handleChange(event: Event) {
 
 ## Typing Provide / Inject {#typing-provide-inject}
 
-O fornecer e injetar são normalmente realizados em componentes separados. Para tipar corretamente os valores injetados, a Vue fornece uma interface `InjectionKey`, que é um tipo genérico que estende o `Symbol`. Ela pode ser utilizada para sincronizar o tipo do valor injetado entre o fornecedor e o consumidor:
+O fornecer e injetar são normalmente realizados em componentes separados. Para corretamente definir os tipos dos valores injetados, a Vue fornece uma interface `InjectionKey`, que é um tipo genérico que estende o `Symbol`. Ela pode ser utilizada para sincronizar o tipo do valor injetado entre o fornecedor e o consumidor:
 
 ```ts
 import { provide, inject } from 'vue'
