@@ -205,7 +205,7 @@ let x: string | number = 1
 </template>
 ```
 
-:::tip
+:::tip Dica
 Se estiveres utilizando a Linha de Comando de Vue ou uma configuração baseada em Webpack, a TypeScript nas expressões de modelo de marcação exigem `vue-loader@^16.8.0`.
 :::
 
