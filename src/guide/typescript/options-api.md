@@ -2,7 +2,7 @@
 
 > Esta página presume que já leste a visão geral no [Utilizando a Vue com a TypeScript](./overview).
 
-:::tip
+:::tip Dica
 Embora a Vue suporte a utilização da TypeScript com a API de Opções, é recomendado utilizar a Vue com a TypeScript através da API de Composição visto que ela oferece a inferência de tipo mais simples, mais eficiente e mais robusta.
 :::
 
@@ -67,7 +67,7 @@ export default defineComponent({
 
 ### Caveats {#caveats}
 
-Devido a uma [limitação de desenho](https://github.com/microsoft/TypeScript/issues/38845) na TypeScript, tens que ser cuidadoso quando estiveres utilizando valores de função para as opções de propriedade `validator` e `default` - certifica-te de que utilizas funções em flecha:
+Se a tua versão de TypeScript for menor do que `4.7`, tens que ser cuidadoso quando estiveres a usar os valores de função para as opções das propriedades `validator` e `default` - certifica-te de que utilizar funções em flecha:
 
 ```ts
 import { defineComponent } from 'vue'
@@ -92,7 +92,7 @@ export default defineComponent({
 })
 ```
 
-Isto impedi a TypeScript de ter que inferir o tipo do `this` dentro destas funções, o que, infelizmente, pode causar falha na inferência de tipo.
+Isto impedi a TypeScript de ter que inferir o tipo do `this` dentro destas funções, o que, infelizmente, pode causar a inferência de tipo falhar na realização do seu trabalho. Isto era uma anterior [limitação do desenho](https://github.com/microsoft/TypeScript/issues/38845), e agora foi melhorada na [TypeScript 4.7](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-7.html#improved-function-inference-in-objects-and-methods).
 
 ## Typing Component Emits {#typing-component-emits}
 
@@ -178,7 +178,7 @@ As anotações explícitas também podem ser exigidas em alguns casos extremos o
 
 ## Typing Event Handlers {#typing-event-handlers}
 
-Quando estiveres lidando com eventos de DOM nativos, pode ser útil tipar o argumento que passamos para o manipulador corretamente. Vamos dar uma vista de olhos neste exemplo:
+Quando estiveres lidando com eventos de DOM nativos, pode ser útil definir um tipo para o argumento que passamos para o manipulador corretamente. Vamos dar uma vista de olhos neste exemplo:
 
 ```vue
 <script lang="ts">
@@ -284,9 +284,9 @@ declare module 'vue' {
 }
 ```
 
-Agora a opção `beforeRouteEnter` será apropriadamente tipada. Nota que isto é apenas um exemplo - bibliotecas bem tipadas como `vue-router` devem automaticamente realizar estas aumentações em suas próprias definições de tipo.
+Agora a opção `beforeRouteEnter` terá o seu tipo apropriadamente definido. Nota que isto é apenas um exemplo - bibliotecas com os tipos corretamente definidos como `vue-router` devem automaticamente realizar estas aumentações em suas próprias definições de tipo.
 
-A colocação desta aumentação está sujeita as [mesmas restrições](#colocação-de-aumentação-de-tipo) que as aumentações de propriedade globais.
+A colocação desta aumentação está sujeita as [mesmas restrições](#type-augmentation-placement) que as aumentações de propriedade globais.
 
 Consulte também:
 
