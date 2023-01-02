@@ -118,7 +118,7 @@ const nav: ThemeConfig['nav'] = [
     ]
   },
   {
-    text: 'Patrocinador',
+    text: 'Patrocinar',
     link: '/sponsor/'
   },
   {
@@ -135,13 +135,13 @@ export const sidebar: ThemeConfig['sidebar'] = {
       items: [
         { text: 'Introdução', link: '/guide/introduction' },
         {
-          text: 'Inicio Rápido',
+          text: 'Introdução Rápida',
           link: '/guide/quick-start'
         }
       ]
     },
     {
-      text: 'O Essencial',
+      text: 'Os Essenciais',
       items: [
         {
           text: 'Criando uma Aplicação',
@@ -201,7 +201,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
         },
         { text: 'Ranhuras', link: '/guide/components/slots' },
         {
-          text: 'Fornecer / Injetar',
+          text: 'Fornecimento / Injeção',
           link: '/guide/components/provide-inject'
         },
         {
@@ -221,7 +221,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           text: 'Diretivas Personalizadas',
           link: '/guide/reusability/custom-directives'
         },
-        { text: 'Extensões (Plugins)', link: '/guide/reusability/plugins' }
+        { text: 'Extensões', link: '/guide/reusability/plugins' }
       ]
     },
     {
@@ -238,7 +238,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       ]
     },
     {
-      text: 'Escalando à Cima',
+      text: 'Escalando para Cima',
       items: [
         { text: 'Componentes de Ficheiro Único', link: '/guide/scaling-up/sfc' },
         { text: 'Ferramental', link: '/guide/scaling-up/tooling' },
@@ -293,7 +293,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       text: 'Tópicos Adicionais',
       items: [
         {
-          text: 'Maneiras de Utilizar Vue',
+          text: 'Maneiras de Usar Vue',
           link: '/guide/extras/ways-of-using-vue'
         },
         {
@@ -313,7 +313,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/extras/render-function'
         },
         {
-          text: 'Vue e o Componentes de Web',
+          text: 'Vue e os Componentes de Web',
           link: '/guide/extras/web-components'
         },
         {
@@ -321,11 +321,11 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/extras/animation'
         }
         // {
-        //   text: 'Building a Library for Vue',
+        //   text: 'Construindo uma Biblioteca para Vue',
         //   link: '/guide/extras/building-a-library'
         // },
         // {
-        //   text: 'Vue for React Devs',
+        //   text: 'Vue para Programadores de React',
         //   link: '/guide/extras/vue-for-react-devs'
         // }
       ]
@@ -389,7 +389,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       ]
     },
     {
-      text: 'Embutidos',
+      text: 'Recursos Embutidos',
       items: [
         { text: 'Diretivas', link: '/api/built-in-directives' },
         { text: 'Componentes', link: '/api/built-in-components' },
@@ -414,9 +414,9 @@ export const sidebar: ThemeConfig['sidebar'] = {
     {
       text: 'APIs Avançadas',
       items: [
-        { text: 'Função "render"', link: '/api/render-function' },
+        { text: 'Função de Interpretação', link: '/api/render-function' },
         { text: 'Interpretação no Lado do Servidor', link: '/api/ssr' },
-        { text: 'Tipos Utilitário de TypeScript', link: '/api/utility-types' },
+        { text: 'Tipos de Utilitário de TypeScript', link: '/api/utility-types' },
         { text: 'Interpretador Personalizado', link: '/api/custom-renderer' }
       ]
     }
@@ -452,7 +452,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       ]
     },
     {
-      text: 'Aula Prática',
+      text: 'Exemplos Práticos',
       items: [
         {
           text: 'Editor de Markdown',
