@@ -77,7 +77,7 @@ onMounted(async () => {
       </p>
     </div>
     <div class="vt-box">
-      <h2>Ótimo Desempenho</h2>
+      <h2>Otimizada</h2>
       <p>
         Verdadeiramente reativa, sistema de interpretação de compilador otimizado
         que raramente precisa de otimização manual.
