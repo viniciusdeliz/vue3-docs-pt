@@ -57,7 +57,7 @@ const filtered = computed(() => {
 <template>
   <div id="api-index">
     <div class="header">
-      <h1>Referência de API</h1>
+      <h1>Referência da API</h1>
       <div class="api-filter">
         <label for="api-filter">Filtrar</label>
         <input
@@ -77,7 +77,11 @@ const filtered = computed(() => {
     >
       <h2 :id="section.anchor">{{ section.text }}</h2>
       <div class="api-groups">
-        <div v-for="item of section.items" :key="item.text" class="api-group">
+        <div
+          v-for="item of section.items"
+          :key="item.text"
+          class="api-group"
+        >
           <h3>{{ item.text }}</h3>
           <ul>
             <li v-for="h of item.headers" :key="h.anchor">
@@ -88,11 +92,9 @@ const filtered = computed(() => {
       </div>
     </div>
 
-    <div
-      v-if="!filtered.length"
-      class="no-match"
-    >Não foi encontrado nada na API que corresponda a "{{ query }}".</div>
-  </div>
+    <div v-if="!filtered.length" class="no-match">
+      Não foi encontrado nada na API que corresponda a "{{ query }}".
+    </div>
 </template>
 
 <style scoped>
