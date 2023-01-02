@@ -44,7 +44,7 @@ html:not(.banner-dismissed) {
   left: 0;
   right: 0;
   height: var(--vt-banner-height);
-  line-height: var(--vt-banner-height);
+  line-height: 0;
   text-align: center;
   font-size: 13px;
   font-weight: 600;
