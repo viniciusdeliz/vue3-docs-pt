@@ -37,7 +37,13 @@ onMounted(async () => {
 <template>
   <div class="vuejobs-wrapper">
     <div class="vj-container">
-      <a class="vj-item" v-for="(job, n) in openings" :key="n" :href="job.link" target="_blank">
+      <a
+        class="vj-item"
+        v-for="(job, n) in openings"
+        :key="n"
+        :href="job.link"
+        target="_blank"
+      >
         <div class="vj-company-logo">
           <img
             :src="job.organization.avatar"
@@ -50,8 +56,7 @@ onMounted(async () => {
             display: flex;
             flex-direction: column;
             justify-content: center;
-          "
-        >
+          ">
           <div class="vj-job-title">{{ job.title }}</div>
           <div class="vj-job-info">
             {{ job.organization.name }} <span>· </span>
@@ -61,12 +66,13 @@ onMounted(async () => {
       </a>
     </div>
     <div class="vj-link">
-      Empregos pela
+      Trabalhos pela
       <a
         href="https://vuejobs.com/?utm_source=vuejs&utm_medium=referral&utm_campaign=jobs_widget&utm_content=bottom_link"
         target="_blank"
         title="Contrate Programadores de Vue.js"
-      >vuejobs.com</a>
+        >vuejobs.com</a
+      >
     </div>
   </div>
 </template>
