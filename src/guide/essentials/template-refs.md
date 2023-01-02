@@ -264,6 +264,6 @@ export default {
 }
 ```
 
-No exemplo acima, um pai referenciando este componente através de referência de modelo de marcação só será capaz de acessar `publicData` e `publicMethod`. 
+No exemplo acima, um pai referenciando este componente através de referência de modelo de marcação só será capaz de acessar `publicData` e `publicMethod`.
 
 </div>
