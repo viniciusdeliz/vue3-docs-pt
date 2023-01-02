@@ -16,7 +16,7 @@ In the Component Basics chapter, we introduced the syntax for [Dynamic Component
 
 By default, an active component instance will be unmounted when switching away from it. This will cause any changed state it holds to be lost. When this component is displayed again, a new instance will be created with only the initial state.
 
-No exemplo abaixo, temos dois componentes com conteúdo - (A) contém um contador, enquando (B) contém uma messagem síncronizada com uma entrada através `v-model`. Tente atualizar o estado de um deles, mude para outro, e então mude de volta para ele: 
+No exemplo abaixo, temos dois componentes com conteúdo - (A) contém um contador, enquando (B) contém uma messagem síncronizada com uma entrada através `v-model`. Tente atualizar o estado de um deles, mude para outro, e então mude de volta para ele:
 
 <SwitchComponent />
 
@@ -73,7 +73,7 @@ Por padrão, `<KeepAlive>` cacheará qualquer instância de componente no lado d
 
 The match is checked against the component's [`name`](/api/options-misc#name) option, so components that need to be conditionally cached by `KeepAlive` must explicitly declare a `name` option.
 
-## Máximo de Instâncias Cacheadas
+## Máximo de Instâncias Cacheadas {#max-cached-instances}
 
 ## Max Cached Instances {#max-cached-instances}
 

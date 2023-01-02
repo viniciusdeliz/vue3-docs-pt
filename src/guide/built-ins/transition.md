@@ -320,13 +320,11 @@ Se necessário, podes também especificar valores separados para as durações d
 
 ### Performance Considerations {#performance-considerations}
 
-You may notice that the animations shown above are mostly using properties like `transform` and `opacity`. These properties are efficient to animate because:
 Tu podes reparar que as animações mostradas acima estão na maior parte das vezes usando propriedades como `transform` e `opacity`. Estas propriedades são eficiantes ao animar porque:
 
-1. They do not affect the document layout during the animation, so they do not trigger expensive CSS layout calculation on every animation frame.
+
 1. Elas não afetam a disposição do documento durante a animação, então elas não acionam cálculos de disposição de CSS dispendiosos em cada quadro da animação.
 
-2. Most modern browsers can leverage GPU hardware acceleration when animating `transform`.
 2. A maior parte dos navegadores podem influenciar a aceleração de hardware da GPU quando estão animando a `transform`.
 
 Em comparação, propriedades como `height` ou `margin` acionarão a disposição de CSS, então são muito mais dispensiosas para animar, e devem ser usadas com cautela. Nós podemos consultas recursos como [CSS-Triggers](https://csstriggers.com/) para saber quais propriedades acionarão a disposição se as animarmos.
