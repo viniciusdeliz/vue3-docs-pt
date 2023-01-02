@@ -83,7 +83,7 @@ const count = ref(0)
 
 O exemplo acima demonstra as duas funcionalidades principais de Vue:
 
-- **Interpretação Declarativa**: a Vue estende a HTML padrão com uma sintaxe de modelo de marcação que permite-nos descrever de maneira declarativa o resultado de HTML baseado no estado de JavaScript. 
+- **Interpretação Declarativa**: a Vue estende a HTML padrão com uma sintaxe de modelo de marcação que permite-nos descrever de maneira declarativa o resultado de HTML baseado no estado de JavaScript.
 
 - **Reatividade**: a Vue rastreia automaticamente as mudanças de estado de JavaScript e atualiza eficientemente o DOM quando as mudanças acontecem.
 
@@ -98,7 +98,7 @@ The rest of the documentation assumes basic familiarity with HTML, CSS, and Java
 O resto da documentação presume familiaridade básica com HTML, CSS e JavaScript. Se você é totalmente iniciante com desenvolvimento frontend, pode não ser a melhor ideia ir direto para uma abstração como seu primeiro passo - domine os fundamentos e depois retorne! Você pode conferir o seu nível de conhecimento com  [esta visão geral de JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript). Experiência prévia com outros _frameworks_ ajuda, mas não é exigida.
 :::
 
-## A Abstração Progressiva
+## A Abstração Progressiva {#the-progressive-framework}
 
 Vue é uma abstração e ecossistema que cobre a maioria das funcionalidades comuns necessárias no desenvolvimento de frontend. Porém a web é extremamente diversa - as coisas que construimos na web podem variar drasticamente na forma e escala. Com isto em mente, a Vua está desenhada para ser flexível e adotável incrementalmente. Dependendo do teu caso de uso, a Vue pode ser utilizada nas diferentes maneiras:
 
