@@ -64,7 +64,7 @@ Isto é uma representação simples do conceito do "fluxo de dados de uma via":
 
 No entanto, a simplicidade começa a decompor-se quando temos **vários componentes que partilham um estado comum**:
 
-1. Várias visões que podem depender do mesmo pedaço de estado. 
+1. Várias visões que podem depender do mesmo pedaço de estado.
 2. Ações de visões diferentes que podem precisar mudar o mesmo pedaço de estado.
 
 For case one, a possible workaround is by "lifting" the shared state up to a common ancestor component, and then pass it down as props. However, this quickly gets tedious in component trees with deep hierarchies, leading to another problem known as [Prop Drilling](/guide/components/provide-inject#prop-drilling).
