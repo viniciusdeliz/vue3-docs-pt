@@ -4,7 +4,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 
 # KeepAlive {#keepalive}
 
-O `<KeepAlive>` é um componente embutido que permite-nos cachear condicionalmente as instâncias de componente quando mudamos dinamicamente entre vários componentes.
+O `<KeepAlive>` é um componente embutido que permite-nos condicionalmente guardar para consulta imediata as instâncias de componente quando mudamos dinamicamente entre vários componentes.
 
 ## Basic Usage {#basic-usage}
 
