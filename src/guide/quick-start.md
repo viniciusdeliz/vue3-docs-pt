@@ -2,7 +2,7 @@
 footer: false
 ---
 
-# Inicio Rápido {#quick-start}
+# Introdução Rápida {#quick-start}
 
 ## Experiemente Vue Online {#try-vue-online}
 
