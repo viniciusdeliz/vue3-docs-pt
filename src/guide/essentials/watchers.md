@@ -112,7 +112,6 @@ watch(x, (newX) => {
   console.log(`x is ${newX}`)
 })
 
-// getter
 // recuperador
 watch(
   () => x.value + y.value,
@@ -296,7 +295,9 @@ You can check out [this example](/examples/#fetching-data) of `watchEffect()` an
 
 For examples like these, with only one dependency, the benefit of `watchEffect()` is relatively small. But for watchers that have multiple dependencies, using `watchEffect()` removes the burden of having to maintain the list of dependencies manually. In addition, if you need to watch several properties in a nested data structure, `watchEffect()` may prove more efficient than a deep watcher, as it will only track the properties that are used in the callback, rather than recursively tracking all of them.
 
-:::tip
+Para exemplos como este, com apenas uma dependência, o benefício da `watchEffect()` é relativamente pequeno. Mas para os observadores que têm várias dependências, usar `watchEffect()` remove o fardo de ter que manter a lista de dependências manualmente. Além disto, se precisares observar várias propriedades em uma estrutura encaixada, a `watchEffect()` pode provar-se mais eficiente do que um observador profundo, já que ele apenas rastreará as propriedades que são usadas na função de resposta, em vez de rastrear recursivamente todos eles.
+
+:::tip Dica
 A `watchEffect` só rastreia dependências durante sua execução **síncrona**. Quando estiveres utilizando-a com uma resposta assíncrona, apenas as propriedades acessadas antes do primeiro visto `await` serão executadas.
 :::
 
