@@ -141,7 +141,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       ]
     },
     {
-      text: 'Os Essenciais',
+      text: 'Os Fundamentos',
       items: [
         {
           text: 'Criando uma Aplicação',
