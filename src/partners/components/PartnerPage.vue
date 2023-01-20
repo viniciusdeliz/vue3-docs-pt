@@ -18,6 +18,10 @@ const { name, description, hiring, contact, website } = p
 function genMailLink(email: string) {
   return `mailto:${email}?subject=Looking for a Vue.js Partner`
 }
+
+function track(id: string, linkType: string) {
+  fathom.trackGoal(`partner-click-${id}-${linkType}`, 0)
+}
 </script>
 
 <template>
