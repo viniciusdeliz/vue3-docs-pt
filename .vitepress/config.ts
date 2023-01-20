@@ -189,12 +189,12 @@ export const sidebar: ThemeConfig['sidebar'] = {
       text: 'Componentes em Profundidade',
       items: [
         {
-          text: 'Registo',
+          text: 'Registro',
           link: '/guide/components/registration'
         },
-        { text: 'Props', link: '/guide/components/props' },
-        { text: 'Events', link: '/guide/components/events' },
-        { text: 'Component v-model', link: '/guide/components/v-model' },
+        { text: 'Propriedades', link: '/guide/components/props' },
+        { text: 'Eventos', link: '/guide/components/events' },
+        { text: 'v-model do Componente', link: '/guide/components/v-model' },
         {
           text: 'Atributos',
           link: '/guide/components/attrs'
