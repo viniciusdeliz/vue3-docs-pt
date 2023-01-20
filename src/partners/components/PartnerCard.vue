@@ -39,10 +39,7 @@ const {
         <h3 v-else>{{ name }}</h3>
       </a>
 
-      <p class="region">
-        <Location />
-        {{ region.join(', ') }}
-      </p>
+      <p class="region"><Location />{{ region.join(', ') }}</p>
 
       <p>{{ intro }}</p>
 
