@@ -1,14 +1,14 @@
-# Component v-model {#component-v-model}
+# v-model do Componente {#component-v-model}
 
-`v-model` can be used on a component to implement a two-way binding.
+`v-model` pode ser usado sobre um componente para implementar uma vínculação de duas vias.
 
-First let's revisit how `v-model` is used on a native element:
+Primeiro vamos revisitar como `v-model` é usado em um elemento nativo:
 
 ```vue-html
 <input v-model="searchText" />
 ```
 
-Under the hood, the template compiler expands `v-model` to the more verbose equivalent for us. So the above code does the same as the following:
+Nos bastidores, o compilador do modelo de marcação expande o `v-model` para o equivalente mais verboso por nós. Então o código acima faz o mesmo que o seguinte:
 
 ```vue-html
 <input
@@ -17,7 +17,7 @@ Under the hood, the template compiler expands `v-model` to the more verbose equi
 />
 ```
 
-When used on a component, `v-model` instead expands to this:
+Quando usado em um componente, `v-model` se expande então para isto:
 
 ```vue-html
 <CustomInput
@@ -26,12 +26,12 @@ When used on a component, `v-model` instead expands to this:
 />
 ```
 
-For this to actually work though, the `<CustomInput>` component must do two things:
+Mas para isto realmente funcionar, o componente `<CustomInput>` deve fazer duas coisas:
 
-1. Bind the `value` attribute of a native `<input>` element to the `modelValue` prop
-2. When a native `input` event is triggered, emit an `update:modelValue` custom event with the new value
+1. Vincular o atributo `value` de um elemento `<input>` nativo à propriedade `modelValue`
+2. Quando um evento `input` nativo é acionado, emite um evento `update:modelValue` personalizado com o novo valor
 
-Here's that in action:
+Cá está aquilo em ação:
 
 <div class="options-api">
 
@@ -72,7 +72,7 @@ defineEmits(['update:modelValue'])
 
 </div>
 
-Now `v-model` should work perfectly with this component:
+Agora `v-model` deve funcionar perfeitamente com este componente:
 
 ```vue-html
 <CustomInput v-model="searchText" />
@@ -145,15 +145,15 @@ const value = computed({
 
 </div>
 
-## `v-model` arguments {#v-model-arguments}
+## Argumentos de `v-model` {#v-model-arguments}
 
-By default, `v-model` on a component uses `modelValue` as the prop and `update:modelValue` as the event. We can modify these names passing an argument to `v-model`:
+Por padrão, `v-model` em um componente usa `modelValue` como propriedade e `update:modelValue` como evento. Nós podemos modificar estes nomes passando um argumento para `v-model`:
 
 ```vue-html
 <MyComponent v-model:title="bookTitle" />
 ```
 
-In this case, the child component should expect a `title` prop and emit an `update:title` event to update the parent value:
+Neste caso, o componente filho deve esperar uma propriedade `title` e emitir um evento `update:title` para atualizar o valor do componente pai:
 
 <div class="composition-api">
 
