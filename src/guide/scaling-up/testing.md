@@ -203,19 +203,19 @@ cy.get(valueSelector).should('be.visible').and('contain.text', '0')
 
   Não depender exclusivamente de testes instantâneos. Afirmação de sequências de caracteres de HTML não descrevem correção. Escreve os testes com intencionalidade.
 
-  Se um método precisa ser testado meticulosamente, considere extraí-lo para uma função utilitária isolada e escrever um teste unitário dedicado para ele. Se poder ser extraído suavemente, pode ser testado como uma parte de um componente, integração, ou teste fim-à-fim que o cubra.
+  Se um método precisa ser testado meticulosamente, considere extraí-lo para uma função utilitária isolada e escrever um teste unitário dedicado para ele. Se poder ser extraído suavemente, pode ser testado como uma parte de um componente, integração, ou teste ponta-a-ponta que o cubra.
 
-### Recommendation {#recommendation-1}
+### Recomendação {#recommendation-1}
 
 - [Vitest](https://vitest.dev/) for components or composables that render headlessly (e.g. the [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) function in VueUse). Components and DOM can be tested using [`@vue/test-utils`](https://github.com/vuejs/test-utils).
 
-- [Cypress Component Testing](https://on.cypress.io/component) for components whose expected behavior depends on properly rendering styles or triggering native DOM events. Can be used with Testing Library via [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro).
+- [Testagem de Componente da Cypress](https://on.cypress.io/component) para os componentes cujos comportamento esperado depende da apresentação apropriada dos estilos ou o acionar de eventos de DOM nativos. Pode ser usado com a Testing Library através da [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro).
 
 The main differences between Vitest and browser-based runners are speed and execution context. In short, browser-based runners, like Cypress, can catch issues that node-based runners, like Vitest, cannot (e.g. style issues, real native DOM events, cookies, local storage, and network failures), but browser-based runners are _orders of magnitude slower than Vitest_ because they do open a browser, compile your stylesheets, and more. Cypress is a browser-based runner that supports component testing. Please read [Vitest's comparison page](https://vitest.dev/guide/comparisons.html#cypress) for the latest information comparing Vitest and Cypress.
 
-### Mounting Libraries {#mounting-libraries}
+### Bibliotecas de Montagem {#mounting-libraries}
 
-Component testing often involves mounting the component being tested in isolation, triggering simulated user input events, and asserting on the rendered DOM output. There are dedicated utility libraries that make these tasks simpler.
+A testagem de componente muitas vezes envolve a montagem do componente a ser testado em isolamento, acionar eventos de entrada de utilizador de maneira simulada, e afirmar sobre a saída do DOM apresentado. Existem bibliotecas utilitárias dedicadas que tornam estas tarefas mais simples.
 
 - [`@vue/test-utils`](https://github.com/vuejs/test-utils) is the official low-level component testing library that was written to provide users access to Vue specific APIs. It's also the lower-level library `@testing-library/vue` is built on top of.
 
@@ -223,27 +223,27 @@ Component testing often involves mounting the component being tested in isolatio
 
 We recommend using `@vue/test-utils` for testing components in applications. `@testing-library/vue` has issues with testing asynchronous component with Suspense, so it should be used with caution.
 
-### Other Options {#other-options-1}
+### Outras Opções {#other-options-1}
 
 - [Nightwatch](https://nightwatchjs.org/) is an E2E test runner with Vue Component Testing support. ([Example Project](https://github.com/nightwatchjs-community/todo-vue))
 
 - [WebdriverIO](https://webdriver.io/docs/component-testing/vue) for cross browser component testing that relies on native user interaction based on standardised automation. Can also be used with Testing Library. 
 
-## E2E Testing {#e2e-testing}
+## Testagem E2E {#e2e-testing}
 
-While unit tests provide developers with some degree of confidence, unit and component tests are limited in their abilities to provide holistic coverage of an application when deployed to production. As a result, end-to-end (E2E) tests provide coverage on what is arguably the most important aspect of an application: what happens when users actually use your applications.
+Enquanto os testes unitários oferecem aos programadores algum grau de confiança, os testes unitários e de componente estão limitados em suas capacidades de fornecer cobertura holística de uma aplicação quando implementada em produção. Como resultado, os testes de ponta-a-ponta (E2E, sigla em Inglês) oferecem cobertura naquilo que é provavelmente o aspeto mais importante de uma aplicação: aquilo que acontece quando utilizadores de fato usam as tuas aplicações.
 
-End-to-end tests focus on multi-page application behavior that makes network requests against your production-built Vue application. They often involve standing up a database or other backend and may even be run against a live staging environment.
+Os testes de ponta-a-ponta concentram-se sobre o comportamento de aplicações de várias páginas que fazem requisições de rede contra a tua aplicação de Vue construída para produção. Eles muitas vezes envolvem levantar uma base de dados ou outro backend e pode até estar a executar contra um ambiente de qualidade.
 
-End-to-end tests will often catch issues with your router, state management library, top-level components (e.g. an App or Layout), public assets, or any request handling. As stated above, they catch critical issues that may be impossible to catch with unit tests or component tests.
+Os testes de ponta-a-ponta muitas vezes capturarão problemas com o teu roteador, biblioteca de gestão de estado, componentes de alto nível (por exemplo, uma Aplicação (`App`) ou Esquema (`Layout`)), recursos públicos, ou qualquer manipulação de requisição. Conforme mencionado acima, eles capturam problemas críticos que podem ser impossíveis de capturar com testes unitários ou testes de componente.
 
-End-to-end tests do not import any of your Vue application's code, but instead rely completely on testing your application by navigating through entire pages in a real browser.
+Os testes de ponta-a-ponta não importam nenhum código da tua aplicação de Vue, mas dependem completamente da testagem da tua aplicação com a navegação através de páginas inteiras em um navegador de verdade.
 
-End-to-end tests validate many of the layers in your application. They can either target your locally built application, or even a live Staging environment. Testing against your Staging environment not only includes your frontend code and static server, but all associated backend services and infrastructure.
+Os testes ponta-a-ponta validam muitas camadas na tua aplicação. Eles podem tanto mirar a tua aplicação construída localmente, ou mesmo um ambiente de qualidade (staging, em Inglês). A testagem contra o teu ambiente de qualidade não apenas inclui o código do teu frontend e servidor estático, mas todos serviços e infraestrutura de backend associados.
 
-> The more your tests resemble the way your software is used, the more confidence they can give you. - [Kent C. Dodds](https://twitter.com/kentcdodds/status/977018512689455106) - Author of the Testing Library
+> Quanto mais os teus testes espelharem a maneira que o teu software é usado, mais confiança eles podem dar-te - [Kent C. Dodds](https://twitter.com/kentcdodds/status/977018512689455106) - Autor da Testing Library
 
-By testing how user actions impact your application, E2E tests are often the key to higher confidence in whether an application is functioning properly or not.
+Por testarem como as ações do utilizador impactam a tua aplicação, os testes E2E são muitas vezes a chave para segurança mais alta nos casos em queremos saber se uma aplicação está devidamente funcional ou não.
 
 ### Choosing an E2E Testing Solution {#choosing-an-e2e-testing-solution}
 
