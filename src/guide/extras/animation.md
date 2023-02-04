@@ -147,9 +147,9 @@ Além da cor, também podes usar as vinculações de estilo para animar a transf
 
 <ElasticHeader />
 
-## Animating with Watchers {#animating-with-watchers}
+## Animar com os Observadores {#animating-with-watchers}
 
-With some creativity, we can use watchers to animate anything based on some numerical state. For example, we can animate the number itself:
+Com alguma criatividade, podemos usar os observadores para animar qualquer coisa baseada em algum estado numérico. Por exemplo, podemos animar o próprio número:
 
 <div class="composition-api">
 
