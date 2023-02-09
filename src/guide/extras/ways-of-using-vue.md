@@ -49,9 +49,9 @@ As abstrações que suportam a abordagem de única página são mais adequadas s
 
 A equipa da Vue também mantém um gerador de aplicação estática chamado [VitePress](https://vitepress.vuejs.org/), o qual alimenta esta página que estás a ler neste preciso momento! a VitePress suporta ambos sabores de SSG. A [Nuxt](https://nuxt.com/) também suporta SSG. Tu podes até mesmo misturar SSR e SSG para diferentes rotas na mesma aplicação de Nuxt.
 
-## Beyond the Web {#beyond-the-web}
+## Para Além da Web {#beyond-the-web}
 
-Although Vue is primarily designed for building web applications, it is by no means limited to just the browser. You can:
+Embora a Vue esteja primariamente desejada para a construção de aplicações de web, de maneira nenhuma esta limitada apenas ao navegador. Tu podes:
 
 - Build desktop apps with [Electron](https://www.electronjs.org/) or [Tauri](https://tauri.studio/en/)
 - Build mobile apps with [Ionic Vue](https://ionicframework.com/docs/vue/overview)
