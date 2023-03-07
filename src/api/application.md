@@ -275,7 +275,7 @@ Fornece um valor que pode ser injetado em todos os componentes descendentes dent
 
 Execute a callback with the current app as injection context.
 
-- **Type**
+- **Tipo**
 
   ```ts
   interface App {
