@@ -214,9 +214,9 @@ For logic reuse, prefer [Composables](/guide/reusability/composables) instead.
 
 ## app.provide() {#app-provide}
 
-Provide a value that can be injected in all descendant components within the application.
+Fornece um valor que pode ser injetado em todos os componentes descendentes dentro da aplicação.
 
-- **Type**
+- **Tipo**
 
   ```ts
   interface App {
@@ -224,21 +224,21 @@ Provide a value that can be injected in all descendant components within the app
   }
   ```
 
-- **Details**
+- **Detalhes**
 
-  Expects the injection key as the first argument, and the provided value as the second. Returns the application instance itself.
+  Exige a chave de injeção como primeiro argumento, e o valor fornecido como o segundo. Retorna a própria instância da aplicação.
 
-- **Example**
+- **Exemplo**
 
   ```js
   import { createApp } from 'vue'
 
   const app = createApp(/* ... */)
 
-  app.provide('message', 'hello')
+  app.provide('message', 'olá')
   ```
 
-  Inside a component in the application:
+  Dentro de um componente na aplicação:
 
   <div class="composition-api">
 
@@ -247,7 +247,7 @@ Provide a value that can be injected in all descendant components within the app
 
   export default {
     setup() {
-      console.log(inject('message')) // 'hello'
+      console.log(inject('message')) // 'olá'
     }
   }
   ```
@@ -259,16 +259,16 @@ Provide a value that can be injected in all descendant components within the app
   export default {
     inject: ['message'],
     created() {
-      console.log(this.message) // 'hello'
+      console.log(this.message) // 'olá'
     }
   }
   ```
 
   </div>
 
-- **See also**
-  - [Provide / Inject](/guide/components/provide-inject)
-  - [App-level Provide](/guide/components/provide-inject#app-level-provide)
+- **Veja também:**
+  - [Fornecer / Injetar](/guide/components/provide-inject)
+  - [Fornecimento a Nível de Aplicação](/guide/components/provide-inject#app-level-provide)
   - [app.runWithContext()](#app-runwithcontext)
 
 ## app.runWithContext()<sup class="vt-badge" data-text="3.3+" /> {#app-runwithcontext}
