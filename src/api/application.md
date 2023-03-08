@@ -283,11 +283,11 @@ Execute a callback with the current app as injection context.
   }
   ```
 
-- **Details**
+- **Detalhes**
 
   Expects a callback function and runs the callback immediately. During the synchronous call of the callback,  `inject()` calls are able to look up injections from the values provided by the current app, even when there is no current active component instance. The return value of the callback will also be returned.
 
-- **Example**
+- **Exemplo**
 
   ```js
   import { inject } from 'vue'
