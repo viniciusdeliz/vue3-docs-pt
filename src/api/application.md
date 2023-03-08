@@ -305,7 +305,7 @@ Execute a callback with the current app as injection context.
 
 Provides the version of Vue that the application was created with. This is useful inside [plugins](/guide/reusability/plugins), where you might need conditional logic based on different Vue versions.
 
-- **Type**
+- **Tipo**
 
   ```ts
   interface App {
@@ -313,16 +313,16 @@ Provides the version of Vue that the application was created with. This is usefu
   }
   ```
 
-- **Example**
+- **Exemplo**
 
-  Performing a version check inside a plugin:
+  Conferindo a versão dentro de uma extensão:
 
   ```js
   export default {
     install(app) {
       const version = Number(app.version.split('.')[0])
       if (version < 3) {
-        console.warn('This plugin requires Vue 3')
+        console.warn('Esta extensão exige Vue 3')
       }
     }
   }
