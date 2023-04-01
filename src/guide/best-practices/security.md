@@ -112,9 +112,9 @@ Numa URL como esta:
 
 Existe um possível problema de segurança se a URL não tiver sido "desinfetada" para evitar a execução de JavaScript usando `javascript:`. Existem bibliotecas tais como [`sanitize-url`](https://www.npmjs.com/package/@braintree/sanitize-url) para ajudar com isto, mas nota: se estiveres sempre a fazer a desinfeção no frontend, já tens um problema de segurança. **As URLs fornecidas pelo utilizador deveriam sempre ser desinfetadas no teu backend antes mesmo de serem guardadas em uma base de dados.** Portanto o problema é evitado para _todos_ os clientes conectando-se à tua API, incluindo aplicações móveis nativas. Também nota que mesmo com URLs desinfetadas, a Vue não pode ajudar-te a garantir que conduzam para destinos seguros.
 
-### Style Injection {#style-injection}
+### Injeção de Estilo {#style-injection}
 
-Looking at this example:
+Olhando neste exemplo:
 
 ```vue-html
 <a
@@ -125,9 +125,9 @@ Looking at this example:
 </a>
 ```
 
-Let's assume that `sanitizedUrl` has been sanitized, so that it's definitely a real URL and not JavaScript. With the `userProvidedStyles`, malicious users could still provide CSS to "click jack", e.g. styling the link into a transparent box over the "Log in" button. Then if `https://user-controlled-website.com/` is built to resemble the login page of your application, they might have just captured a user's real login information.
+Suponhamos que `sanitizedUrl` foi desinfetada, para que seja definitivamente uma URL verdadeira e não JavaScript. Com a `userProvidedStyles`, utilizadores maliciosos poderiam continuar a fornecer CSS para "sequestrar o clique", por exemplo estilizando a ligação para um caixa transparente sobre o botão "Log In" (iniciar em Português). Então se `https://user-controlled-website.com/` estiver construída para parecer-se com a página de inicialização da tua aplicação, podem já ter capturado uma informação de inicialização verdadeira do utilizador.
 
-You may be able to imagine how allowing user-provided content for a `<style>` element would create an even greater vulnerability, giving that user full control over how to style the entire page. That's why Vue prevents rendering of style tags inside templates, such as:
+Tu podes ser capaz de imaginar como permitir que o conteúdo fornecido pelo utilizador para um elemento `<style>` criaria uma vulnerabilidade ainda mais grande, dando este controlo completo do utilizador sobre como estilizar a página inteira. É por isto que a Vue evita a interpretação de marcadores de `style` dentro dos modelos de marcação, tais como:
 
 ```vue-html
 <style>{{ userProvidedStyles }}</style>
