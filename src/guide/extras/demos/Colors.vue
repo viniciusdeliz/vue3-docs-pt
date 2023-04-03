@@ -6,6 +6,7 @@ const x = ref(0)
 function onMousemove(e) {
   x.value = e.clientX
 }
+
 </script>
 
 <template>
