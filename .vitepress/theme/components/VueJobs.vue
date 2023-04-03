@@ -60,7 +60,7 @@ onMounted(async () => {
           <div class="vj-job-title">{{ job.title }}</div>
           <div class="vj-job-info">
             {{ job.organization.name }} <span>· </span>
-            <span>{{ job.remote ? 'Remote' : job.locations[0] }}</span>
+            <span>{{ job.remote ? 'Remoto' : job.locations[0] }}</span>
           </div>
         </div>
       </a>
