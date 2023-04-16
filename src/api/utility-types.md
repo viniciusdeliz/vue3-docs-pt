@@ -1,14 +1,14 @@
-# Utility Types {#utility-types}
+# Tipos de Utilitário de TypeScript {#utility-types}
 
 :::info
-This page only lists a few commonly used utility types that may need explanation for their usage. For a full list of exported types, consult the [source code](https://github.com/vuejs/core/blob/main/packages/runtime-core/src/index.ts#L131).
+Esta página lista apenas alguns tipos de utilitários comumente usados ​​que podem precisar de explicação de uso. Para obter uma lista completa dos tipos exportados, consulte o [código fonte](https://github.com/vuejs/core/blob/main/packages/runtime-core/src/index.ts#L131).
 :::
 
 ## PropType\<T> {#proptype-t}
 
-Used to annotate a prop with more advanced types when using runtime props declarations.
+Usado para anotar uma propriedade com tipos mais avançados ao usar declarações de pro em tempo de execução.
 
-- **Example**
+- **Exemplo**
 
   ```ts
   import type { PropType } from 'vue'
@@ -106,9 +106,9 @@ Extract prop types from a runtime props options object. The extracted types are 
 
 ## ComponentCustomProperties {#componentcustomproperties}
 
-Used to augment the component instance type to support custom global properties.
+Usado para aumentar o tipo de instância do componente para oferecer suporte a propriedades globais personalizadas.
 
-- **Example**
+- **Exemplo**
 
   ```ts
   import axios from 'axios'
@@ -129,9 +129,9 @@ Used to augment the component instance type to support custom global properties.
 
 ## ComponentCustomOptions {#componentcustomoptions}
 
-Used to augment the component options type to support custom options.
+Usado para aumentar os tipos de opções do componente para suportar opções customizadas.
 
-- **Example**
+- **Exemplo**
 
   ```ts
   import { Route } from 'vue-router'
@@ -151,9 +151,9 @@ Used to augment the component options type to support custom options.
 
 ## ComponentCustomProps {#componentcustomprops}
 
-Used to augment allowed TSX props in order to use non-declared props on TSX elements.
+Usado para aumentar propriedades TSX permitidas para usar propriedades não declaradas em elementos TSX.
 
-- **Example**
+- **Exemplo**
 
   ```ts
   declare module 'vue' {
@@ -176,11 +176,11 @@ Used to augment allowed TSX props in order to use non-declared props on TSX elem
 
 ## CSSProperties {#cssproperties}
 
-Used to augment allowed values in style property bindings.
+Usado para aumentar os valores permitidos em associações de propriedade de estilo.
 
-- **Example**
+- **Exemplo**
 
-  Allow any custom CSS property
+  Permitir qualquer propriedade customizada de CSS
 
   ```ts
   declare module 'vue' {
