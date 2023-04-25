@@ -99,6 +99,10 @@ dist/
 .vitepress/dist
 .vitepress/cache
 
+# vitepress build output
+.vitepress/dist
+.vitepress/cache
+
 # Serverless directories
 .serverless/
 
