@@ -1,34 +1,34 @@
 # \<script setup> {#script-setup}
 
-`<script setup>` is a compile-time syntactic sugar for using Composition API inside Single-File Components (SFCs). It is the recommended syntax if you are using both SFCs and Composition API. It provides a number of advantages over the normal `<script>` syntax:
+`<script setup>` é um facilitador sintático em tempo de compilação para usar a API de Composição dentro de Componentes de Arquivo Único (SFCs). É a sintaxe recomendada se você está usando SFCs e a API de Composição.  Ele fornece uma série de vantagens sobre a sintaxe normal do `<script>`:
 
-- More succinct code with less boilerplate
-- Ability to declare props and emitted events using pure TypeScript
-- Better runtime performance (the template is compiled into a render function in the same scope, without an intermediate proxy)
-- Better IDE type-inference performance (less work for the language server to extract types from code)
+- Código mais sucinto com menos _boilerplate_
+- Capacidade de declarar propriedades e eventos emitidos usando TypeScript puro
+- Melhor desempenho em tempo de execução (o modelo é compilado em uma função _render_ no mesmo escopo, sem um _proxy_ intermediário)
+- Melhor desempenho de inferência de tipo na IDE (menos trabalho para o servidor de linguagem extrair tipos de código)
 
-## Basic Syntax {#basic-syntax}
+## Sintaxe Básica {#basic-syntax}
 
-To opt-in to the syntax, add the `setup` attribute to the `<script>` block:
+Para ativar a sintaxe, adicione o atributo `setup` ao bloco `<script>`:
 
 ```vue
 <script setup>
-console.log('hello script setup')
+console.log('olá script setup')
 </script>
 ```
 
-The code inside is compiled as the content of the component's `setup()` function. This means that unlike normal `<script>`, which only executes once when the component is first imported, code inside `<script setup>` will **execute every time an instance of the component is created**.
+O código em seu interior é compilado como o conteúdo da função `setup()` do componente. Isso significa que, diferentemente do `<script>` normal, que é executado apenas uma vez quando o componente é inicialmente importado, o código dentro do `<script setup>` será **executado toda vez que uma instância do componente for criada**.
 
-### Top-level bindings are exposed to template {#top-level-bindings-are-exposed-to-template}
+### Vínculações de Nível Superior são expostas ao modelo {#top-level-bindings-are-exposed-to-template}
 
-When using `<script setup>`, any top-level bindings (including variables, function declarations, and imports) declared inside `<script setup>` are directly usable in the template:
+Ao usar `<script setup>`, quaisquer vínculações de nível superior (incluindo variáveis, declarações de função e importações) declaradas dentro de `<script setup>` podem ser usadas diretamente no modelo:
 
 ```vue
 <script setup>
-// variable
-const msg = 'Hello!'
+// variável
+const msg = 'Olá!'
 
-// functions
+// funções
 function log() {
   console.log(msg)
 }
@@ -39,7 +39,7 @@ function log() {
 </template>
 ```
 
-Imports are exposed in the same fashion. This means you can directly use an imported helper function in template expressions without having to expose it via the `methods` option:
+Importações são expostas da mesma maneira. Isso significa que você pode usar diretamente uma função auxiliar importada em expressões de modelo sem precisar expô-la através da opção `methods`:
 
 ```vue
 <script setup>
@@ -51,7 +51,7 @@ import { capitalize } from './helpers'
 </template>
 ```
 
-## Reactivity {#reactivity}
+## Reatividade {#reactivity}
 
 Reactive state needs to be explicitly created using [Reactivity APIs](./reactivity-core). Similar to values returned from a `setup()` function, refs are automatically unwrapped when referenced in templates:
 
@@ -67,9 +67,9 @@ const count = ref(0)
 </template>
 ```
 
-## Using Components {#using-components}
+## Usando Componentes {#using-components}
 
-Values in the scope of `<script setup>` can also be used directly as custom component tag names:
+Valores no escopo de `<script setup>` também podem ser usados ​​diretamente como nomes de identificadoers de componentes personalizados:
 
 ```vue
 <script setup>
@@ -81,11 +81,11 @@ import MyComponent from './MyComponent.vue'
 </template>
 ```
 
-Think of `MyComponent` as being referenced as a variable. If you have used JSX, the mental model is similar here. The kebab-case equivalent `<my-component>` also works in the template - however PascalCase component tags are strongly recommended for consistency. It also helps differentiating from native custom elements.
+Pense em `MyComponent` sendo referenciado como uma variável. Se você usou JSX, o modelo mental é semelhante aqui. O equivalente kebab-case `<my-component>` também funciona no modelo - no entanto, as tags de componente PascalCase são fortemente recomendadas para consistência. Também ajudam a diferenciar de elementos nativos personalizados.
 
-### Dynamic Components {#dynamic-components}
+### Componentes Dinâmicos {#dynamic-components}
 
-Since components are referenced as variables instead of registered under string keys, we should use dynamic `:is` binding when using dynamic components inside `<script setup>`:
+Como os componentes são referenciados como variáveis ​​em vez de registrados sob chaves string, devemos usar a vinculação dinâmica `:is` ao usar componentes dinâmicos dentro de `<script setup>`:
 
 ```vue
 <script setup>
@@ -99,21 +99,21 @@ import Bar from './Bar.vue'
 </template>
 ```
 
-Note how the components can be used as variables in a ternary expression.
+Observe como os componentes podem ser usados ​​como variáveis ​​em uma expressão ternária.
 
-### Recursive Components {#recursive-components}
+### Componentes Recursivos {#recursive-components}
 
-An SFC can implicitly refer to itself via its filename. E.g. a file named `FooBar.vue` can refer to itself as `<FooBar/>` in its template.
+Um SFC pode implicitamente referir-se a si próprio por meio de seu nome de arquivo. Por exemplo, um arquivo chamado `FooBar.vue` pode referir-se a si mesmo com `<FooBar/>` em seu modelo.
 
-Note this has lower priority than imported components. If you have a named import that conflicts with the component's inferred name, you can alias the import:
+Note que isso tem prioridade menor do que os componentes importados. Se você tiver uma importação nomeada que conflite com o nome inferido do componente, você pode usar um psuedônimo na importação:
 
 ```js
 import { FooBar as FooBarChild } from './components'
 ```
 
-### Namespaced Components {#namespaced-components}
+### Componentes Namespaced {#namespaced-components}
 
-You can use component tags with dots like `<Foo.Bar>` to refer to components nested under object properties. This is useful when you import multiple components from a single file:
+Você pode usar identificadores de componentes com pontos como `<Foo.Bar>` para se referir aos componentes aninhados nas propriedades de objeto. Isso é útil quando você importa múltiplos componentes de um único arquivo:
 
 ```vue
 <script setup>
@@ -122,29 +122,29 @@ import * as Form from './form-components'
 
 <template>
   <Form.Input>
-    <Form.Label>label</Form.Label>
+    <Form.Label>etiqueta</Form.Label>
   </Form.Input>
 </template>
 ```
 
-## Using Custom Directives {#using-custom-directives}
+## Usando Diretivas Personalizadas {#using-custom-directives}
 
-Globally registered custom directives just work as normal. Local custom directives don't need to be explicitly registered with `<script setup>`, but they must follow the naming scheme `vNameOfDirective`:
+As diretivas personalizadas registradas globalmente funcionam como esperado. Diretivas personalizadas locais não precisam ser registradas explicitamente com `<script setup>`, mas elas precisam seguir o esquema de nomeação `vNameOfDirective`:
 
 ```vue
 <script setup>
 const vMyDirective = {
   beforeMount: (el) => {
-    // do something with the element
+    // faz algo com o elemento
   }
 }
 </script>
 <template>
-  <h1 v-my-directive>This is a Heading</h1>
+  <h1 v-my-directive>Isto é um Cabeçalho</h1>
 </template>
 ```
 
-If you're importing a directive from elsewhere, it can be renamed to fit the required naming scheme:
+Se você estiver importando a diretiva de outro lugar, ela pode ser renomeada para se adequar ao esquema de nomeação exigido:
 
 ```vue
 <script setup>
@@ -152,9 +152,9 @@ import { myDirective as vMyDirective } from './MyDirective.js'
 </script>
 ```
 
-## defineProps() & defineEmits() {#defineprops-defineemits}
+## defineProps() e defineEmits() {#defineprops-defineemits}
 
-To declare options like `props` and `emits` with full type inference support, we can use the `defineProps` and `defineEmits` APIs, which are automatically available inside `<script setup>`:
+Para declarar opções como `props` e `emits` com suporte completo a inferência de tipos, podemos usar as APIs `defineProps` e `defineEmits`, que estão automaticamente disponíveis dentro do `<script setup>`:
 
 ```vue
 <script setup>
@@ -163,17 +163,17 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['change', 'delete'])
-// setup code
+// código de configuração
 </script>
 ```
 
-- `defineProps` and `defineEmits` are **compiler macros** only usable inside `<script setup>`. They do not need to be imported, and are compiled away when `<script setup>` is processed.
+- `defineProps` e `defineEmits` são **macros de compilador** utilizáveis apenas dentro de `<script setup>`. Eles não precisam ser importados e são compilados quando `<script setup>` é processado.
 
-- `defineProps` accepts the same value as the `props` option, while `defineEmits` accepts the same value as the `emits` option.
+- `defineProps` aceita o mesmo valor que a opção `props`, enquanto `defineEmits` aceita o mesmo valor que a opção `emits`.
 
-- `defineProps` and `defineEmits` provide proper type inference based on the options passed.
+- `defineProps` e `defineEmits`  fornecem inferência de tipo adequada com base nas opções passadas.
 
-- The options passed to `defineProps` and `defineEmits` will be hoisted out of setup into module scope. Therefore, the options cannot reference local variables declared in setup scope. Doing so will result in a compile error. However, it _can_ reference imported bindings since they are in the module scope as well.
+- As opções passadas para `defineProps` e `defineEmits` serão elevadas para fora do _setup_ no escopo do módulo. Portanto, as opções não podem referenciar variáveis ​​locais declaradas no escopo do _setup_. Fazer isso resultará em um erro de compilação. No entanto, pode se referenciar a vinculações importadas pois elas também estão no escopo do módulo.
 
 ### Type-only props/emit declarations<sup class="vt-badge ts" /> {#type-only-props-emit-declarations}
 
@@ -229,9 +229,9 @@ This will be compiled to equivalent runtime props `default` options. In addition
 
 ## defineExpose() {#defineexpose}
 
-Components using `<script setup>` are **closed by default** - i.e. the public instance of the component, which is retrieved via template refs or `$parent` chains, will **not** expose any of the bindings declared inside `<script setup>`.
+Componentes usando `<script setup>` são **fechados por padrão** - ou seja, a instância pública do componente, que é obtida por refs do modelo ou cadeias `$parent`, **não** irá expor qualquer vinculação declarada dentro de `<script setup>`.
 
-To explicitly expose properties in a `<script setup>` component, use the `defineExpose` compiler macro:
+Para expor explicitamente propriedades em um componente `<script setup>`, use o macro de compilação `defineExpose`:
 
 ```vue
 <script setup>
@@ -247,7 +247,7 @@ defineExpose({
 </script>
 ```
 
-When a parent gets an instance of this component via template refs, the retrieved instance will be of the shape `{ a: number, b: number }` (refs are automatically unwrapped just like on normal instances).
+Quando um pai busca uma instância deste componente via refs de modelo, a instância obtida terá a forma  `{ a: number, b: number }` (refs são automaticamente desembrulhadas como em instâncias normais).
 
 ## defineOptions() {#defineoptions}
 
@@ -287,7 +287,7 @@ const slots = defineSlots<{
 
 ## `useSlots()` & `useAttrs()` {#useslots-useattrs}
 
-Usage of `slots` and `attrs` inside `<script setup>` should be relatively rare, since you can access them directly as `$slots` and `$attrs` in the template. In the rare case where you do need them, use the `useSlots` and `useAttrs` helpers respectively:
+O uso de `slots` e `attrs` dentro de `<script setup>` deve ser relativamente raro, já que você pode acessá-los diretamente com `$slots` e `$attrs` no modelo. No caso raro em que você precisar deles, use os auxiliares `useSlots` e `useAttrs` respectivamente:
 
 ```vue
 <script setup>
@@ -298,11 +298,11 @@ const attrs = useAttrs()
 </script>
 ```
 
-`useSlots` and `useAttrs` are actual runtime functions that return the equivalent of `setupContext.slots` and `setupContext.attrs`. They can be used in normal composition API functions as well.
+`useSlots` e `useAttrs` são funções em tempo de execução reais que retornam o equivalente de `setupContext.slots` e `setupContext.attrs`. Eles também podem ser usados ​​em funções normais da API de Composição.
 
-## Usage alongside normal `<script>` {#usage-alongside-normal-script}
+## Usando junto ao usual `<script>` {#usage-alongside-normal-script}
 
-`<script setup>` can be used alongside normal `<script>`. A normal `<script>` may be needed in cases where we need to:
+`<script setup>` pode ser usado junto com o usual `<script>`. Um `<script>` normal pode ser necessário nos casos em que você precisa:
 
 - Declare options that cannot be expressed in `<script setup>`, for example `inheritAttrs` or custom options enabled via plugins (Can be replaced by [`defineOptions`](/api/sfc-script-setup#defineoptions) in 3.3+).
 - Declaring named exports.
@@ -310,10 +310,10 @@ const attrs = useAttrs()
 
 ```vue
 <script>
-// normal <script>, executed in module scope (only once)
+// <script> normal, executado no escopo do módulo (apenas uma vez)
 runSideEffectOnce()
 
-// declare additional options
+// declara opções adicionais
 export default {
   inheritAttrs: false,
   customOptions: {}
@@ -321,20 +321,20 @@ export default {
 </script>
 
 <script setup>
-// executed in setup() scope (for each instance)
+// executado no escopo setup() (para cada instância)
 </script>
 ```
 
-Support for combining `<script setup>` and `<script>` in the same component is limited to the scenarios described above. Specifically:
+O suporte para combinar `<script setup>` e `<script>` no mesmo componente é limitado aos cenários descritos acima. Especificamente:
 
-- Do **NOT** use a separate `<script>` section for options that can already be defined using `<script setup>`, such as `props` and `emits`.
-- Variables created inside `<script setup>` are not added as properties to the component instance, making them inaccessible from the Options API. Mixing APIs in this way is strongly discouraged.
+- **NÃO** use uma seção de `<script>` separada para opções que já podem ser definidas usando `<script setup>`, como `props` e `emits`.
+- Variáveis criadas dentro de `<script setup>` não são adicionadas como propriedades na instância do componente, tornando-as inacessíveis para API de Opções. Misturar as APIs dessa maneira é fortemente desencorajado.
 
 If you find yourself in one of the scenarios that is not supported then you should consider switching to an explicit [`setup()`](/api/composition-api-setup) function, instead of using `<script setup>`.
 
-## Top-level `await` {#top-level-await}
+## `await` em nível superior {#top-level-await}
 
-Top-level `await` can be used inside `<script setup>`. The resulting code will be compiled as `async setup()`:
+`await` em nível superior pode ser usado dentro de `<script setup>`. O código resultante será compilado como `async setup()`:
 
 ```vue
 <script setup>
@@ -342,10 +342,10 @@ const post = await fetch(`/api/post/1`).then((r) => r.json())
 </script>
 ```
 
-In addition, the awaited expression will be automatically compiled in a format that preserves the current component instance context after the `await`.
+Além disso, a expressão aguardada será compilada automaticamente em um formato que preserva o contexto da instância do componente atual após o `await`.
 
 :::warning Note
-`async setup()` must be used in combination with `Suspense`, which is currently still an experimental feature. We plan to finalize and document it in a future release - but if you are curious now, you can refer to its [tests](https://github.com/vuejs/core/blob/main/packages/runtime-core/__tests__/components/Suspense.spec.ts) to see how it works.
+`async setup()` deve ser usado em combinação com `Suspense`, o qual atualmente é ainda um recurso experimental. Planejamos finalizá-lo e documentá-lo em um lançamento futuro - mas se você estiver curioso agora, você pode consultar seus [testes](https://github.com/vuejs/core/blob/main/packages/runtime-core/__tests__/components/Suspense.spec.ts) para ver como funciona.
 :::
 
 ## Generics <sup class="vt-badge ts" /> {#generics}
@@ -379,4 +379,4 @@ defineProps<{
 
 ## Restrictions {#restrictions}
 
-Due to the difference in module execution semantics, code inside `<script setup>` relies on the context of an SFC. When moved into external `.js` or `.ts` files, it may lead to confusion for both developers and tools. Therefore, **`<script setup>`** cannot be used with the `src` attribute.
+Devido à diferença na semântica de execução do módulo, o código dentro de `<script setup>` depende do contexto de um SFC. Quando movido para arquivos externos `.js` ou `.ts`, pode causar confusão tanto para desenvolvedores quanto para ferramentas. Portanto, **`<script setup>`** não pode ser usado com o atributo `src`.
