@@ -22,7 +22,7 @@ const nav: ThemeConfig['nav'] = [
         link: 'https://v2.vuejs.org'
       },
       {
-        text: 'Migrar da Vue 2',
+        text: 'Guia de Migração',
         link: 'https://v3-migration.vuejs.org/'
       }
     ]
