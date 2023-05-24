@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import gsap from 'gsap'
+import { ref } from 'vue'
 
 const show = ref(true)
 

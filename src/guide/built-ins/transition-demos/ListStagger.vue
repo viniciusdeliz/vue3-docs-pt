@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import gsap from 'gsap'
+import { ref, computed } from 'vue'
 
 const list = [
   { msg: 'Bruce Lee' },
