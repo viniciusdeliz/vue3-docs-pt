@@ -3,6 +3,9 @@ import partnersRaw from '../partners.json'
 import { ref, shallowRef, computed, onMounted } from 'vue'
 import PartnerCard from './PartnerCard.vue'
 import { Partner } from './type'
+import partnersRaw from '../partners.json'
+import PartnerCard from './PartnerCard.vue'
+import { computed, onMounted, ref, shallowRef } from 'vue'
 
 const props = defineProps<{
   filter?: (p: Partner) => boolean | undefined

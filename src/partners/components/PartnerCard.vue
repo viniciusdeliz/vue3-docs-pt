@@ -2,6 +2,7 @@
 import { Partner } from './type'
 import { normalizeName, getHero, getLogo, track } from './utils'
 import Location from './PartnerLocation.vue'
+import { normalizeName, getHero, getLogo, track } from './utils'
 
 const props = defineProps<{
   data: Partner

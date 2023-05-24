@@ -4,8 +4,6 @@ import PartnerHero from './PartnerHero.vue'
 import PartnerCard from './PartnerCard.vue'
 import PartnerList from './PartnerList.vue'
 import PartnerJoin from './PartnerJoin.vue'
-import data from '../partners.json'
-import { Partner } from './type'
 
 const spotlighted = ref<Partner | null>(null)
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import data from '../partners.json'
 import { Partner } from './type'
 import { normalizeName, track } from './utils'
 import PartnerCard from './PartnerCard.vue'
+import { normalizeName, track } from './utils'
 import { VTIconChevronLeft } from '@vue/theme'
 
 const props = defineProps<{
@@ -17,10 +17,6 @@ const { name, description, hiring, contact, website } = p
 
 function genMailLink(email: string) {
   return `mailto:${email}?subject=Looking for a Vue.js Partner`
-}
-
-function track(id: string, linkType: string) {
-  fathom.trackGoal(`partner-click-${id}-${linkType}`, 0)
 }
 </script>
 
