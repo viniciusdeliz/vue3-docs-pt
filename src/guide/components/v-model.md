@@ -53,6 +53,7 @@ export default {
 ```
 
 </div>
+
 <div class="composition-api">
 
 ```vue
