@@ -174,7 +174,7 @@ Se estiveres escrevendo os teus modelos de marcação diretamente em um DOM (por
 <button-counter></button-counter>
 ```
 
-Consulte [Advertências de Analise de Modelo de Marcação de DOM](#advertências-de-analise-de-modelo-de-marcação-de-dom) para mais detalhes.
+Consulte [Advertências de Analise de Modelo de Marcação de DOM](#dom-template-parsing-caveats) para mais detalhes.
 
 ## Passando Propriedades {#passing-props}
 
