@@ -22,7 +22,7 @@ export default {
     }
   },
 
-  // `mounted` é um gatilho de cíclo de vida que explicaremos adiante
+  // `mounted` é um gatilho de ciclo de vida que explicaremos adiante
   mounted() {
     // `this` refere-se a instância do componente.
     console.log(this.count) // => 1
@@ -481,7 +481,7 @@ state.count = 1
 console.log(count.value) // 1
 ```
 
-Se uma nova referência for atribuida à uma propridade ligada à uma referência existente, substituirá a antiga referência:
+Se uma nova referência for atribuída à uma propriedade ligada à uma referência existente, substituirá a antiga referência:
 
 ```js
 const otherCount = ref(2)
@@ -595,5 +595,4 @@ export default {
   }
 }
 ```
-
 </div>
