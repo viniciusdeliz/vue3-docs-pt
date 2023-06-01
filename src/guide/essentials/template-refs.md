@@ -93,7 +93,7 @@ Veja também: [Tipando Refs do Modelo de Marcação](/guide/typescript/compositi
 
 <div class="composition-api">
 
-Quando o `ref` é utilizado dentro de `v-for`, a referência correspondente deve conter uma valor de arranjo (`Array`), que será povoada com os elementos depois de montar:
+Quando o `ref` é utilizado dentro de `v-for`, a referência correspondente deve conter uma valor de arranjo, que será povoada com os elementos depois de montar:
 
 ```vue
 <script setup>
@@ -122,7 +122,7 @@ onMounted(() => console.log(itemRefs.value))
 </div>
 <div class="options-api">
 
-Quando o `ref` é utilizado dentro de `v-for`, o valor de referência resultante será um arranjo (`array`) contendo os elementos correspondentes:
+Quando o `ref` é utilizado dentro de `v-for`, o valor de referência resultante será um arranjo contendo os elementos correspondentes:
 
 ```vue
 <script>
@@ -153,7 +153,7 @@ export default {
 
 </div>
 
-Deve ser notado que o arranjo de referência **não** garante a mesma ordem conforme o arranjo (`array`) de origem.
+Deve ser notado que o arranjo de referência **não** garante a mesma ordem conforme o arranjo de origem.
 
 ## Referências de Função {#function-refs}
 
@@ -167,7 +167,7 @@ Nota que estamos utilizando uma vinculação de `:ref` dinâmica assim podemos p
 
 ## Referência no Componente {#ref-on-component}
 
-> Esta secção presume conhecimento de [Componentes](/guide/essentials/component-basics). Esteja a vontade para saltá-la e voltar mais tarde.
+> Esta seção presume conhecimento de [Componentes](/guide/essentials/component-basics). Esteja a vontade para saltá-la e voltar mais tarde.
 
 O `ref` também pode ser utilizado sobre um componente filho. Neste caso a referência será aquela de uma instância de componente:
 
