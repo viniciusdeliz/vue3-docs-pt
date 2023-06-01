@@ -250,7 +250,7 @@ Para tratar este problema, a Vua fornece **modificadores de evento** para `v-on`
 <div @click.self="doThat">...</div>
 ```
 
-::: tip
+:::tip DICA
 A ordem importa quando estiveres utilizando modificadores porque o código relevante é gerado na mesma ordem. Portanto a utilização de `@click.prevent.self` impedirá **a ação de cliques padrão sobre o próprio elemento e seus filhos** enquanto `@click.self.prevent` só impedirá a ação de cliques padrão sobre o próprio elemento.
 :::
 
@@ -272,7 +272,7 @@ Os modificadores `.capture`, `.once`, e `.passive` refletem as [opções do mét
 
 O modificador `.passive` é normalmente utilizado com o ouvintes de evento de toque para [melhorar o desempenho nos dispositivos móveis](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#improving_scrolling_performance_with_passive_listeners).
 
-::: tip
+:::tip DICA
 Não utilize `.passive` e `.prevent` juntos, porque `.passive` já indica para o navegador que _não_ tencionas previnir o comportamente padrão do evento, e provavelmente verás um aviso a partir do navegador se o fizeres.
 :::
 
@@ -316,7 +316,7 @@ Tu podes utilizar os seguintes modificadores para acionares ouvintes de eventos 
 - `.shift`
 - `.meta`
 
-::: tip Nota
+:::tip NOTA
 Nos teclados de Macintosh, meta é a tecla de comando (⌘). Nos teclados de Windows, meta é a tecla de Windows (⊞). Nos teclados de Sun Microsystems, meta é marcado como um diamante sólido (◆). Em certos teclados, especialmente teclados de MIT e máquina de Lisp e sucessores, tais como o teclado de Knight, teclado space-cadet, meta é rotulado “META”. Nos teclados simbólicos, meta é rotulado “META” ou “Meta”.
 :::
 
@@ -330,7 +330,7 @@ Por exemplo:
 <div @click.ctrl="doSomething">Do something</div>
 ```
 
-::: tip
+:::tip NOTA
 Nota que as teclas modificadoras são diferentes das teclas normais e quando utilizadas com eventos de `keyup`, elas têm que ser pressionadas quando o evento for emitido. Em outras palavras, `keyup.ctrl` só acionará se libertares uma tecla enquanto estiveres pressionando `ctrl` para baixo. Não acionará se libertares apenas a tecla `ctrl`. 
 :::
 
