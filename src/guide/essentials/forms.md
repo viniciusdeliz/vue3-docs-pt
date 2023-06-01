@@ -73,7 +73,7 @@ Além disto, a `v-model` pode ser utilizada nas entradas de tipos diferentes, `<
 </div>
 
 <span id="vmodel-ime-tip"></span>
-:::tip Nota
+:::tip NOTA
 Para as linguagens que exigem um [IME](https://en.wikipedia.org/wiki/Input_method) (Chinês, Japonês, Coreano etc.), notarás que a `v-model` não é atualizada durante a composição da IME. Se também quiseres responder a estas atualizações, utilize o teu próprio ouvinte de evento `input` e vinculação de `value` ao invés de utilizar `v-model`.
 :::
 
@@ -137,7 +137,7 @@ Caixa de confirmação única, valor booleano:
 
 </div>
 
-Nós também podemos vincular várias caixas de confirmação ao mesmo valor de arranjo (`array`) ou [Conjunto (`Set`)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set):
+Nós também podemos vincular várias caixas de confirmação ao mesmo valor de arranjo ou [conjunto](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set):
 
 <div class="composition-api">
 
@@ -268,7 +268,7 @@ Seleção única:
 
 </div>
 
-:::tip Nota
+:::tip NOTA
 Se o valor inicial da tua expressão de `v-model` não corresponder a quaisquer uma das opções, o elemento `<select>` interpretará em um estado "não selecionado (unselected)". Na iOS impedirá o utilizador de ser capaz de selecionar o primeiro item uma vez que a iOS não disparará o evento de mudança neste caso. É portanto recomendado fornecer uma opção desativada com um valor vazio, conforme demonstrado no exemplo acima.
 :::
 
@@ -399,7 +399,7 @@ A `true-value` e `false-value` são atributos específicos de Vue que só funcio
   :false-value="dynamicFalseValue" />
 ```
 
-:::tip Dica
+:::tip DICA
 Os atributos `true-value` e `false-value` não afetam o atributo `value` da entrada (elemento `input`), porque os navegadores não incluem caixas não confirmadas na submissão de formulário. Para garantir que um dos valores é submetido em um formulário (por exemplo "yes" ou "no"), utilize entradas de rádio.
 :::
 
