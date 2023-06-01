@@ -273,15 +273,15 @@ Quando estiveres utilizando `<template v-for>`, o `key` deve ser colocado no con
 </template>
 ```
 
-:::tip Nota
-Aqui `key` é um atributo especial sendo vinculado com a `v-bind`. Ela não deveria ser confundida com a variável chave (`key`) de propriedade quando estiveres [utilizando a `v-for` com um objeto](#v-for-com-um-objeto).
+:::tip NOTA
+Aqui `key` é um atributo especial sendo vinculado com a `v-bind`. Ela não deveria ser confundida com a variável chave (`key`) de propriedade quando estiveres [utilizando a `v-for` com um objeto](#v-for-with-an-object).
 :::
 
 [É recomendado](/style-guide/rules-essential#use-keyed-v-for) fornecer um atributo `key` com a `v-for` sempre que possível, a menos que o conteúdo de DOM iterado seja simples (por exemplo, não contém quaisquer componentes ou elementos de DOM com conteúdo), estás intencionalmente confiando no comportamento padrão para ganhos de desempenho.
 
 O vinculação de `key` aguarda por valores primitivos - por exemplo, sequências de caracteres e números. Não utilize objetos como chaves de `v-for`. Para utilização detalhada do atributo `key`, favor de consultar a [documentação da API de `key`](/api/built-in-special-attributes#key).
 
-## `v-for` com um Componente
+## `v-for` com um Componente {#v-for-with-a-component}
 
 > Esta secção presume conhecimento de [Componentes](/guide/essentials/component-basics). Esteja livre para ignorá-la e voltar mais tarde.
 
