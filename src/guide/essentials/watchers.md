@@ -216,7 +216,7 @@ watch(
 
 </div>
 
-:::warning Utilize com Cautela
+:::warning USE COM CAUTELA
 A observação profunda precisa percorrer todas propriedades encaixadas dentro do objeto observado, e pode ser caro quando utilizada sobre grandes estruturas de dados. Utilize-a só quando necessário e esteja ciente das implicações de desempenho.
 :::
 
@@ -297,7 +297,7 @@ For examples like these, with only one dependency, the benefit of `watchEffect()
 
 Para exemplos como este, com apenas uma dependência, o benefício da `watchEffect()` é relativamente pequeno. Mas para os observadores que têm várias dependências, usar `watchEffect()` remove o fardo de ter que manter a lista de dependências manualmente. Além disto, se precisares observar várias propriedades em uma estrutura encaixada, a `watchEffect()` pode provar-se mais eficiente do que um observador profundo, já que ele apenas rastreará as propriedades que são usadas na função de resposta, em vez de rastrear recursivamente todos eles.
 
-:::tip Dica
+:::tip DICA
 A `watchEffect` só rastreia dependências durante sua execução **síncrona**. Quando estiveres utilizando-a com uma resposta assíncrona, apenas as propriedades acessadas antes do primeiro visto `await` serão executadas.
 :::
 
