@@ -8,7 +8,7 @@ Se estiveres familiarizado com os conceitos do DOM Virtual e preferires o poder 
 
 ## Interpolação de Texto {#text-interpolation}
 
-A forma mais básica de vinculação de dados é a interpolação de texto utilizando a sintaxe de "Mustache (Bigode)" (chavetas duplas):
+A forma mais básica de vinculação de dados é a interpolação de texto utilizando a sintaxe de chavetas duplas:
 
 ```vue-html
 <span>Message: {{ msg }}</span>
@@ -18,7 +18,7 @@ O marcador de bigode será substituído com o valor da propriedade `msg` a parti
 
 ## HTML Bruto {#raw-html}
 
-Os bigodes duplos interpretam os dados como texto simples, não como HTML. Para produzir a HTML verdadeira, precisarás utilizar a [diretiva `v-html`](/api/built-in-directives.html#v-html):
+Os bigodes duplos interpretam os dados como texto simples, não como HTML. Para produzir a HTML verdadeira, precisarás utilizar a [diretiva `v-html`](/api/built-in-directives#v-html):
 
 ```vue-html
 <p>Using text interpolation: {{ rawHtml }}</p>
@@ -38,13 +38,13 @@ Cá nos deparamos com algo novo. O atributo `v-html` que estás vendo é chamado
 
 Os conteúdos do `span` serão substituído com o valor da propriedade `rawHtml`, interpretado como HTMl simples - vínculos de dados são ignorados. Nota que não podes utilizar `v-html` para compor os parciais do modelo de marcação, porque a Vue não é um motor de modelo de marcação baseado em sequências de caracteres. Ao invés disto, os componentes são privilegiados como a unidade fundamental para reutilização e composição de UI.
 
-:::warning Security Warning Aviso de Segurança
+:::warning AVISO DE SEGURANÇA
 Interpretar dinamicamente HTML arbitrário no teu sítio pode ser muito perigoso porque pode facilmente conduzir à [vulnerabilidades de XSS](https://en.wikipedia.org/wiki/Cross-site_scripting). Só utilize `v-html` em conteúdo de confiança e **nunca** no conteúdo fornecido pelo utilizador.
 :::
 
 ## Vinculações de Atributo {#attribute-bindings}
 
-Os bigodes não podem ser utilizados dentro de atributos de HTML. No lugar deles, utilize a [diretiva `v-bind`](/api/built-in-directives.html#v-bind):
+Os bigodes não podem ser utilizados dentro de atributos de HTML. No lugar deles, utilize a [diretiva `v-bind`](/api/built-in-directives#v-bind):
 
 ```vue-html
 <div v-bind:id="dynamicId"></div>
@@ -129,7 +129,7 @@ Estas expressões serão avaliadas como JavaScript no escopo de dados da atual i
 
 Nos modelos de marcação de Vue, as expressões de JavaScript podem ser utilizada nas seguintes posições:
 
-- Dentro das interpolações de texto (bigodes)
+- Dentro das interpolações de texto (chavetas)
 - No valor de atributo de quaisquer diretivas de Vue (atributos especiais que começam com `v-`)
 
 ### Apenas Expressões {#expressions-only}
@@ -156,7 +156,7 @@ Portanto, as seguintes **não** funcionarão:
 </time>
 ```
 
-:::tip
+:::tip NOTA
 As funções chamadas dentro de expressões de vinculação ser chamada toda vez que o componente atualizar, então elas **não** devem ter quaisquer efeitos colaterais, tais como mudando dados ou acionando operações assíncronas.
 :::
 
@@ -239,7 +239,6 @@ Os argumentos dinâmicos são esperados ser avaliados para uma sequência de car
 As expressões de argumento dinâmico têm algumas restrições de sintaxe porque certos caracteres, tais como espaços e aspas, são inválidos dentro dos nomes de atributos de HTML. Por exemplo, o seguinte é inválido:
 
 ```vue-html
-<!-- This will trigger a compiler warning. -->
 <!-- Isto acionará um alerta de compilação. -->
 <a :['foo' + bar]="value"> ... </a>
 ```
