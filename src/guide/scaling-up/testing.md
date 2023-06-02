@@ -2,7 +2,7 @@
 import TestingApiSwitcher from './TestingApiSwitcher.vue'
 </script>
 
-# Testagem {#testing}
+# Testes {#testing}
 
 ## Porquê Testar? {#why-test}
 
@@ -10,21 +10,21 @@ Os testes automatizados ajudam-te e a tua construir aplicações de Vue complexa
 
 Neste guia, cobriremos a terminologia fundamental e forneceremos as nossas recomendações a respeito de quais ferramentas escolher para a tua aplicação de Vue 3.
 
-Existe uma seção específica da Vue que cobre os constituíveis. Consulte abaixo a [Testagem das Constituíveis](#testing-composables) para mais detalhes.
+Existe uma seção específica da Vue que cobre as funções de composição. Consulte abaixo a [Testando as Funções de Composição](#testing-composables) para mais detalhes.
 
 ## Quando Testar {#when-to-test}
 
 Comece a testar desde o inicio! Nós recomendamos-te começar a escrever testes o mais cedo que puderes. Quanto mais tempo esperares para adicionar testes à tua aplicação, mas dependências a tua aplicação terá, e mais difícil será começar.
 
-## Tipos de Testagem {#testing-types}
+## Tipos de Testes {#testing-types}
 
-Quando estiveres a desenhar a estratégia de testagem da tua aplicação de Vue, deves influenciar os seguintes tipos de testagem:
+Quando estiveres a desenhar a estratégia de testes da tua aplicação de Vue, deves influenciar os seguintes tipos de testes:
 
 - **Unit**: Checks that inputs to a given function, class, or composable are producing the expected output or side effects.
 - **Component**: Checks that your component mounts, renders, can be interacted with, and behaves as expected. These tests import more code than unit tests, are more complex, and require more time to execute.
 - **End-to-end**: Checks features that span multiple pages and makes real network requests against your production-built Vue application. These tests often involve standing up a database or other backend.
 
-Cada tipo de testagem desempenha um papel na estratégia de testagem da tua aplicação e cada um proteger-te-á contra diferentes tipos de problemas. 
+Cada tipo de testes desempenha um papel na estratégia de testes da tua aplicação e cada um proteger-te-á contra diferentes tipos de problemas. 
 
 ## Visão Geral {#overview}
 
@@ -77,10 +77,10 @@ Eles são tipicamente módulos planos de JavaScript / TypeScript não relacionad
 
 Existem duas exemplos onde FAZES teste unitário de funcionalidades especificas da Vue:
 
-1. Constituíveis
+1. Funções de Composição
 2. Componentes
 
-### Constituíveis {#composables}
+### Funções de Composição {#composables}
 
 One category of functions specific to Vue applications are [Composables](/guide/reusability/composables), which may require special handling during tests.
 See [Testing Composables](#testing-composables) below for more details.
@@ -101,17 +101,17 @@ Um componente pode ser testado de duas maneiras:
 
 - [Vitest](https://vitest.dev/)
 
-  Já que a configuração oficial criada pela `create-vue` é baseada na [Vite](https://vitejs.dev/), recomendamos o uso de uma abstração de teste unitário que pode influenciar a mesma conduta de configuração e transformação diretamente a partir da Vite. A [Vitest](https://vitest.dev/) é uma abstração de teste unitário desenhada especificamente para este propósito, criada e mantida pelos membros da equipa da Vue / Vite. Ela integra com projetos baseados em Vite com mínimo de esforço, e é estrondosamente rápida.
+  Já que a configuração oficial criada pela `create-vue` é baseada na [Vite](https://pt.vitejs.dev/), recomendamos o uso de uma abstração de teste unitário que pode influenciar a mesma conduta de configuração e transformação diretamente a partir da Vite. A [Vitest](https://vitest.dev/) é uma abstração de teste unitário desenhada especificamente para este propósito, criada e mantida pelos membros da equipa da Vue / Vite. Ela integra com projetos baseados em Vite com mínimo de esforço, e é estrondosamente rápida.
 
 ### Outras Opções {#other-options}
 
 - [Peeky](https://peeky.dev/) é um outro executor de teste unitário rápido com integração de Vite de primeira classe. Ele é também criado por um membro da equipa principal da Vue e oferece uma interface de teste baseada em GUI.
 
-- [Jest](https://jestjs.io/) é uma abstração de testagem unitária popular, e pode ser posta a funcionar com a Vite através do pacote [vite-test](https://github.com/sodatea/vite-jest). No entanto, apenas recomendados a Jest se tiveres um conjunto de teste de Jest existente que precisa ser migrado para um projeto baseado na Vite, já que a Vitest oferece uma integração mais fluida e melhor desempenho.
+- [Jest](https://jestjs.io/) é uma abstração de teste unitário popular, e pode ser posta a funcionar com a Vite através do pacote [vite-test](https://github.com/sodatea/vite-jest). No entanto, apenas recomendados a Jest se tiveres um conjunto de teste de Jest existente que precisa ser migrado para um projeto baseado na Vite, já que a Vitest oferece uma integração mais fluida e melhor desempenho.
 
-## Testagem de Componente {#component-testing}
+## Teste de Componente {#component-testing}
 
-Em aplicações de Vue, os componentes são os blocos de construção principais da interface do utilizador. Os componentes são portanto a unidade natural de isolamento quando isto aproxima-se da validação do comportamento da tua aplicação. A partir de uma perspetiva de granularidade, a testegam de componente situa-se em algum lugar acima da testagem unitária e pode ser considerada uma forma de testagem de integração. Grande parte da tua aplicação em Vue deve ser coberta por um teste de componente e recomendamos que cada componente de Vue tenha o seu próprio ficheiro de especificação `spec`.
+Em aplicações de Vue, os componentes são os blocos de construção principais da interface do utilizador. Os componentes são portanto a unidade natural de isolamento quando isto aproxima-se da validação do comportamento da tua aplicação. A partir de uma perspetiva de granularidade, a teste de componente situa-se em algum lugar acima do teste unitário e pode ser considerado uma forma de teste de integração. Grande parte da tua aplicação em Vue deve ser coberta por um teste de componente e recomendamos que cada componente de Vue tenha o seu próprio ficheiro de especificação `spec`.
 
 Os testes de componente devem capturar problemas relativos as propriedades do teu componente, eventos, ranhuras que ele fornece, estilos, classes, gatilhos do ciclo de vida, e muito mais.
 
@@ -209,13 +209,13 @@ cy.get(valueSelector).should('be.visible').and('contain.text', '0')
 
 - [Vitest](https://vitest.dev/) for components or composables that render headlessly (e.g. the [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) function in VueUse). Components and DOM can be tested using [`@vue/test-utils`](https://github.com/vuejs/test-utils).
 
-- [Testagem de Componente da Cypress](https://on.cypress.io/component) para os componentes cujos comportamento esperado depende da apresentação apropriada dos estilos ou o acionar de eventos de DOM nativos. Pode ser usado com a Testing Library através da [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro).
+- [Teste de Componente da Cypress](https://on.cypress.io/component) para os componentes cujos comportamento esperado depende da apresentação apropriada dos estilos ou o acionar de eventos de DOM nativos. Pode ser usado com a Testing Library através da [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro).
 
 The main differences between Vitest and browser-based runners are speed and execution context. In short, browser-based runners, like Cypress, can catch issues that node-based runners, like Vitest, cannot (e.g. style issues, real native DOM events, cookies, local storage, and network failures), but browser-based runners are _orders of magnitude slower than Vitest_ because they do open a browser, compile your stylesheets, and more. Cypress is a browser-based runner that supports component testing. Please read [Vitest's comparison page](https://vitest.dev/guide/comparisons.html#cypress) for the latest information comparing Vitest and Cypress.
 
 ### Bibliotecas de Montagem {#mounting-libraries}
 
-A testagem de componente muitas vezes envolve a montagem do componente a ser testado em isolamento, acionar eventos de entrada de utilizador de maneira simulada, e afirmar sobre a saída do DOM apresentado. Existem bibliotecas utilitárias dedicadas que tornam estas tarefas mais simples.
+O teste de componente muitas vezes envolve a montagem do componente a ser testado em isolamento, acionar eventos de entrada de utilizador de maneira simulada, e afirmar sobre a saída do DOM apresentado. Existem bibliotecas utilitárias dedicadas que tornam estas tarefas mais simples.
 
 - [`@vue/test-utils`](https://github.com/vuejs/test-utils) is the official low-level component testing library that was written to provide users access to Vue specific APIs. It's also the lower-level library `@testing-library/vue` is built on top of.
 
@@ -229,7 +229,7 @@ We recommend using `@vue/test-utils` for testing components in applications. `@t
 
 - [WebdriverIO](https://webdriver.io/docs/component-testing/vue) for cross browser component testing that relies on native user interaction based on standardised automation. Can also be used with Testing Library. 
 
-## Testagem E2E {#e2e-testing}
+## Testes de Ponta-a-Ponta {#e2e-testing}
 
 Enquanto os testes unitários oferecem aos programadores algum grau de confiança, os testes unitários e de componente estão limitados em suas capacidades de fornecer cobertura holística de uma aplicação quando implementada em produção. Como resultado, os testes de ponta-a-ponta (E2E, sigla em Inglês) oferecem cobertura naquilo que é provavelmente o aspeto mais importante de uma aplicação: aquilo que acontece quando utilizadores de fato usam as tuas aplicações.
 
@@ -237,43 +237,43 @@ Os testes de ponta-a-ponta concentram-se sobre o comportamento de aplicações d
 
 Os testes de ponta-a-ponta muitas vezes capturarão problemas com o teu roteador, biblioteca de gestão de estado, componentes de alto nível (por exemplo, uma Aplicação (`App`) ou Esquema (`Layout`)), recursos públicos, ou qualquer manipulação de requisição. Conforme mencionado acima, eles capturam problemas críticos que podem ser impossíveis de capturar com testes unitários ou testes de componente.
 
-Os testes de ponta-a-ponta não importam nenhum código da tua aplicação de Vue, mas dependem completamente da testagem da tua aplicação com a navegação através de páginas inteiras em um navegador de verdade.
+Os testes de ponta-a-ponta não importam nenhum código da tua aplicação de Vue, mas dependem completamente do teste da tua aplicação com a navegação através de páginas inteiras em um navegador de verdade.
 
-Os testes ponta-a-ponta validam muitas camadas na tua aplicação. Eles podem tanto mirar a tua aplicação construída localmente, ou mesmo um ambiente de qualidade (staging, em Inglês). A testagem contra o teu ambiente de qualidade não apenas inclui o código do teu frontend e servidor estático, mas todos serviços e infraestrutura de backend associados.
+Os testes ponta-a-ponta validam muitas camadas na tua aplicação. Eles podem tanto mirar a tua aplicação construída localmente, ou mesmo um ambiente de qualidade (staging, em Inglês). O teste contra o teu ambiente de qualidade não apenas inclui o código do teu frontend e servidor estático, mas todos serviços e infraestrutura de backend associados.
 
 > Quanto mais os teus testes espelharem a maneira que o teu software é usado, mais confiança eles podem dar-te - [Kent C. Dodds](https://twitter.com/kentcdodds/status/977018512689455106) - Autor da Testing Library
 
 Por testarem como as ações do utilizador impactam a tua aplicação, os testes E2E são muitas vezes a chave para segurança mais alta nos casos em queremos saber se uma aplicação está devidamente funcional ou não.
 
-### Escolhendo uma Solução de Testagem E2E {#choosing-an-e2e-testing-solution}
+### Escolhendo uma Solução de Testes de Ponta-a-Ponta {#choosing-an-e2e-testing-solution}
 
-Enquanto a testagem de ponta-ponta (E2E) na Web tem ganhado uma reputação negativa por testes de pouca confiança e atraso do processos de desenvolvimento, ferramentas de E2E modernas têm feito progressos consideráveis para criar testes mais fiáveis, interativos, e úteis. Quando escolheres uma abstração de testagem E2E, as seguintes seções fornecem algum guia sobre coisas para manter em mente quando estiveres a escolher uma abstração de testagem para a tua aplicação.
+Enquanto o teste de ponta-ponta (E2E) na Web tem ganhado uma reputação negativa por causa testes de pouca confiança e atraso do processos de desenvolvimento, ferramentas de E2E modernas têm feito progressos consideráveis para criar testes mais fiáveis, interativos, e úteis. Quando escolheres uma abstração de testes de ponta-a-ponta, as seguintes seções fornecem algum guia sobre coisas para manter em mente quando estiveres a escolher uma abstração de testes para a tua aplicação.
 
-#### Testagem Cruzada de Navegador {#cross-browser-testing}
+#### Testes Cruzado de Navegador {#cross-browser-testing}
 
-Um dos benefício primários que a testagem de ponta-a-ponta (E2E) é conhecida por ser sua capacidade de testar a tua aplicação através de vários navegadores. Enquanto isto pode parecer desejável para ter 100% cobertura cruzada de navegador, é importante notar que a testagem cruzada de navegador tem reduzido os retornos sobre os recursos de uma equipa devido ao tempo adicional e poder de máquina exigido para executá-los consistentemente. Como resultado, é importante ser cuidadoso a respeito deste compromisso quando estiveres a escolher a quantidade de testagem cruzada de navegador a tua aplicação precisa.
+Um dos benefício primários que o teste de ponta-a-ponta (E2E) é conhecida por ser sua capacidade de testar a tua aplicação através de vários navegadores. Enquanto isto pode parecer desejável para ter 100% cobertura cruzada de navegador, é importante notar que o teste cruzado de navegador tem reduzido os retornos sobre os recursos de uma equipa devido ao tempo adicional e poder de máquina exigido para executá-los consistentemente. Como resultado, é importante ser cuidadoso a respeito deste compromisso quando estiveres a escolher a quantidade de teste cruzado de navegador a tua aplicação precisa.
 
 #### Laços de Reações Mais Rápidos {#faster-feedback-loops}
 
-Um dos problemas primários com os testes de ponta-a-ponta (E2E) e o desenvolvimento é que executar o conjunto inteiro leva muito tempo. Normalmente, isto apenas é feito em condutas de integração e implementação contínua (CI/CD). As abstrações de testagem E2E modernas têm ajudado a resolver isto adicionado funcionalidades como execuções paralelas, que permitem as condutas de CI/CD muitas vezes executarem magnitudes mais rápido do que antes. Além disto, quando estiveres a programar localmente, a capacidade de executar seletivamente um único teste para a página sobre a qual estás a trabalhar enquanto também fornece o recarregamento instantâneo dos testes pode ajudar a impulsionar o fluxo de trabalho e produtividade do programador.
+Um dos problemas primários com os testes de ponta-a-ponta (E2E) e o desenvolvimento é que executar o conjunto inteiro leva muito tempo. Normalmente, isto apenas é feito em condutas de integração e implementação contínua (CI/CD). As abstrações de testes de ponta-a-ponta modernas têm ajudado a resolver isto adicionado funcionalidades como execuções paralelas, que permitem as condutas de CI/CD muitas vezes executarem magnitudes mais rápido do que antes. Além disto, quando estiveres a programar localmente, a capacidade de executar seletivamente um único teste para a página sobre a qual estás a trabalhar enquanto também fornece o recarregamento instantâneo dos testes pode ajudar a impulsionar o fluxo de trabalho e produtividade do programador.
 
 #### Experiência de Depuração de Primeira Classe {#first-class-debugging-experience}
 
-Embora os programadores têm tradicionalmente dependido dos exames de registos em uma janela de terminal para ajudar a determinar o que correu mal em um teste, as abstrações de teste de ponta-a-ponta (E2E) permitem os programadores influenciar ferramentas com as quais eles já estão familiarizados, por exemplo, ferramentas de programador do navegador.
+Embora os programadores têm tradicionalmente dependido dos exames de registos em uma janela de terminal para ajudar a determinar o que correu mal em um teste, as abstrações de teste de ponta-a-ponta permitem os programadores influenciar ferramentas com as quais eles já estão familiarizados, por exemplo, ferramentas de programador do navegador.
 
 #### Visibilidade no Modo Desgovernado {#visibility-in-headless-mode}
 
-Quando os testes de ponta-a-ponta (E2E) estão a executar em condutas de integração / implementação contínuas, eles estão muitas vezes a executar em navegadores desgovernados (por exemplo, nenhum navegador visível é aberto para o utilizador observar). Uma funcionalidade crítica das abstrações de testagem E2E modernas é a capacidade de ver fotografias e ou vídeos da aplicação durante a testagem, fornecendo alguma compreensão no do porquê dos erros estarem a acontecer. Historicamente, era tedioso manter estas integrações.
+Quando os testes de ponta-a-ponta estão a executar em condutas de integração / implementação contínuas, eles estão muitas vezes a executar em navegadores desgovernados (por exemplo, nenhum navegador visível é aberto para o utilizador observar). Uma funcionalidade crítica das abstrações de testes de ponta-a-ponta modernas é a capacidade de ver fotografias e ou vídeos da aplicação durante os testes, fornecendo alguma compreensão no do porquê dos erros estarem a acontecer. Historicamente, era tedioso manter estas integrações.
 
 ### Recomendação {#recommendation-2}
 
 - [Cypress](https://www.cypress.io/)
 
-  Em geral, acreditamos que a Cypress fornece a solução mais completa de E2E com funcionalidades como uma interface gráfica informativa, excelente depurabilidade, afirmações e implementações forjadas, execução paralela, fotografias e muito mais. Conforme mencionado acima, ela também fornece suporte para [Testagem de Componente](https://docs.cypress.io/guides/component-testing/introduction). No entanto, ela apenas suporta navegadores baseados no Chromium e a Firefox.
+  Em geral, acreditamos que a Cypress fornece a solução mais completa de E2E com funcionalidades como uma interface gráfica informativa, excelente depurabilidade, afirmações e implementações forjadas, execução paralela, fotografias e muito mais. Conforme mencionado acima, ela também fornece suporte para [Teste de Componente](https://docs.cypress.io/guides/component-testing/introduction). No entanto, ela apenas suporta navegadores baseados no Chromium e a Firefox.
 
 ### Outras Opções {#other-options-2}
 
-- [Playwright](https://playwright.dev/) é também uma excelente solução de testagem E2E com uma gama maior de suporte de navegador (principalmente o WebKit). Consulte o [Porquê a Playwright](https://playwright.dev/docs/why-playwright) para mais detalhes.
+- [Playwright](https://playwright.dev/) é também uma excelente solução de testes de ponta-a-ponta com uma gama maior de suporte de navegador (principalmente o WebKit). Consulte o [Porquê a Playwright](https://playwright.dev/docs/why-playwright) para mais detalhes.
 
 - [Nightwatch](https://nightwatchjs.org/) is an E2E testing solution based on [Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver). This gives it the widest browser support range.
 
@@ -307,7 +307,7 @@ export default defineConfig({
 })
 ```
 
-:::tip Dica
+:::tip DICA
 Se estiveres a usar a TypeScript, adicione `vitest/globals` ao campo `types` do teu ficheiro `tsconfig.json`.
 
 ```json
@@ -355,11 +355,11 @@ Finalmente, atualizar o teu ficheiro `package.json` para adicionar o programa qu
 > npm test
 ```
 
-### Testagem de Constituíveis {#testing-composables}
+### Teste de Funções de Composição {#testing-composables}
 
 > This section assumes you have read the [Composables](/guide/reusability/composables) section.
 
-Quando chegasse a testagem de constituíveis, podemos dividi-los em duas categorias: constituíveis que não dependem de uma instância de componente hospedeira, e constituíveis que dependem. 
+No que diz respeito a testes de funções de composição, podemos dividi-los em duas categorias: funções de composição que não dependem de uma instância de componente hospedeira, e funções de composição que dependem. 
 
 Um constituível que depende de uma instância de componente hospedeira quando usa as seguintes APIs:
 
@@ -413,7 +413,7 @@ export function withSetup(composable) {
   })
   app.mount(document.createElement('div'))
   // retornar o resultado e a instância da aplicação
-  // para testagem do fornecimento ou desmontagem
+  // para teste do fornecimento ou desmontagem
   return [result, app]
 }
 ```
@@ -423,7 +423,7 @@ import { useFoo } from './foo'
 
 test('useFoo', () => {
   const [result, app] = withSetup(() => useFoo(123))
-  // imitar o fornecimento para a testagem das injeções
+  // imitar o fornecimento para o teste das injeções
   app.provide(...)
   // executar as afirmações
   expect(result.foo.value).toBe(1)
@@ -432,7 +432,7 @@ test('useFoo', () => {
 })
 ```
 
-Para constituíveis mais complexos, poderia também ser mais fácil testá-lo escrevendo os testes contra o componente envolvedor usando as técnicas de [Testagem de Componente](#component-testing).
+Para funções de composição mais complexas, poderia também ser mais fácil testá-lo escrevendo os testes contra o componente envolvedor usando as técnicas de [Testes de Componente](#component-testing).
 
 <!--
 TODO more testing recipes can be added in the future e.g.
