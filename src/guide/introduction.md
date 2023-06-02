@@ -274,15 +274,15 @@ Programadores diferentes tem diferentes estilos de aprendizado. Sinta-te livre p
 
 <div class="vt-box-container next-steps">
   <a class="vt-box" href="/tutorial/">
-    <p class="next-steps-link">Experimente o Passo-a-Passo</p>
+    <p class="next-steps-link">Experimentar o Passo-a-Passo</p>
     <p class="next-steps-caption">Para aqueles que preferem o aprendizado de coisas com prática.</p>
   </a>
   <a class="vt-box" href="/guide/quick-start.html">
-    <p class="next-steps-link">Leia o Guia</p>
+    <p class="next-steps-link">Ler o Guia</p>
     <p class="next-steps-caption">O guia acompanha-te através de cada aspeto da abstração de maneira detalhada.</p>
   </a>
   <a class="vt-box" href="/examples/">
-    <p class="next-steps-link">Consulte os Exemplos</p>
-    <p class="next-steps-caption">Explore os exemplos de funcionalidades principais e tarefas de UI comuns.</p>
+    <p class="next-steps-link">Consultar os Exemplos</p>
+    <p class="next-steps-caption">Explore os exemplos de funcionalidades principais e tarefas de interfaces de aplicações comuns.</p>
   </a>
 </div>
