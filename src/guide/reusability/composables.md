@@ -11,7 +11,7 @@ This section assumes basic knowledge of Composition API. If you have been learni
 
 ## What is a "Composable"? {#what-is-a-composable}
 
-No contexto das aplicações de Vue, um "constituível" é uma função que influencia a API de Composição da Vue a resumir e reutilizar **lógica com estado**.
+No contexto das aplicações de Vue, uma "função de composição" é uma função que influencia a API de Composição da Vue a resumir e reutilizar **lógica com estado**.
 
 Quando estamos a construir aplicações de frontend, frequentemente precisamos reutilizar a lógica para tarefas comuns. Por exemplo, podemos precisar formatar datas em muitos lugares, assim extraimos uma função reutilizável para isto. Esta função formatadora resume a **lógica sem estado**: ela recebe alguma entrada e imediatamente retorna a saída esperada. Existem muitas bibliotecas por aí a fora para reutilização de lógica sem estado - por exemplo [lodash](https://lodash.com/) e [date-fns](https://date-fns.org/), as quais já podes ter ouvido falar.
 
@@ -40,26 +40,26 @@ onUnmounted(() => window.removeEventListener('mousemove', update))
 <template>Mouse position is at: {{ x }}, {{ y }}</template>
 ```
 
-Mas e se quisermos reutilizar a mesma lógica em vários componentes? Nós podemos extrair a lógica em um ficheiro externo, como uma função constituível:
+Mas e se quisermos reutilizar a mesma lógica em vários componentes? Nós podemos extrair a lógica em um ficheiro externo, como uma função de composição:
 
 ```js
 // mouse.js
 import { ref, onMounted, onUnmounted } from 'vue'
 
-// por convenção, os nomes da função constituível começa com "use"
+// por convenção, os nomes da função de composição começa com "use"
 export function useMouse() {
-  // estado resumido e gerido pela constituível
+  // estado resumido e gerido pela função de composição
   const x = ref(0)
   const y = ref(0)
 
   // a composable can update its managed state over time.
-  // uma constituível pode atualizar o seu estado gerido ao longo do tempo.
+  // uma função de composição pode atualizar o seu estado gerido ao longo do tempo.
   function update(event) {
     x.value = event.pageX
     y.value = event.pageY
   }
 
-  // uma constituível também pode prender-se no ciclo de vida do seu
+  // uma função de composição também pode prender-se no ciclo de vida do seu
   // componente proprietário para configurar e deitar abaixo os
   // efeitos colaterais
   onMounted(() => window.addEventListener('mousemove', update))
@@ -88,11 +88,11 @@ const { x, y } = useMouse()
 
 [Try it in the Playground](https://play.vuejs.org/#eNqNkj1rwzAQhv/KocUOGKVzSAIdurVjoQUvJj4XlfgkJNmxMfrvPcmJkkKHLrbu69H7SlrEszFyHFDsxN6drDIeHPrBHGtSvdHWwwKDwzfNHwjQWd1DIbd9jOW3K2qq6aTJxb6pgpl7Dnmg3NS0365YBnLgsTfnxiNHACvUaKe80gTKQeN3sDAIQqjignEhIvKYqMRta1acFVrsKtDEQPLYxuU7cV8Msmg2mdTilIa6gU5p27tYWKKq1c3ENphaPrGFW25+yMXsHWFaFlfiiOSvFIBJjs15QJ5JeWmaL/xYS/Mfpc9YYrPxl52ULOpwhIuiVl9k07Yvsf9VOY+EtizSWfR6xKK6itgkvQ/+fyNs6v4XJXIsPwVL+WprCiL8AEUxw5s=)
 
-Conforme podemos ver, a lógica fundamental permanece idêntica - tudo o que tivemos que fazer foi movê-la para uma função externa e retornar o estado que deveria ser exposto. Tal como dentro de um componente, podes utilizar uma grama completa de [funções de API de Composição](/api/#composition-api) nas constituíveis. A mesma funcionalidade de `useMouse()` pode agora ser utilizada em qualquer componente.
+Conforme podemos ver, a lógica fundamental permanece idêntica - tudo o que tivemos que fazer foi movê-la para uma função externa e retornar o estado que deveria ser exposto. Tal como dentro de um componente, podes utilizar uma grama completa de [funções de API de Composição](/api/#composition-api) nas funções de composição. A mesma funcionalidade de `useMouse()` pode agora ser utilizada em qualquer componente.
 
-Mesmo assim a parte mais fantástica das constituíveis, é que podes também encaixá-las: uma função constituível pode chamar uma ou mais outras funções constituíveis. Isto permite-nos compor lógica complexa utilizando pequenas unidades isoladas, semelhante a como compomos uma aplicação inteira utilizando componentes. De fato, é por isto que decidimos chamar a coleção de APIs que torna este padrão possível de API de Composição.
+Mesmo assim a parte mais fantástica das funções de composição, é que podes também encaixá-las: uma função de composição pode chamar uma ou mais outras funções funções de composição. Isto permite-nos compor lógica complexa utilizando pequenas unidades isoladas, semelhante a como compomos uma aplicação inteira utilizando componentes. De fato, é por isto que decidimos chamar a coleção de APIs que torna este padrão possível de API de Composição.
 
-Por exemplo, podemos extrair a lógica de adição e remoção dum ouvinte de evento de DOM para a sua própria constituível:
+Por exemplo, podemos extrair a lógica de adição e remoção dum ouvinte de evento de DOM para a sua própria função de composição:
 
 ```js
 // event.js
@@ -106,7 +106,7 @@ export function useEventListener(target, event, callback) {
 }
 ```
 
-E agora a nossa constituível `useMouse()` pode ser simplificada para:
+E agora a nossa função de composição `useMouse()` pode ser simplificada para:
 
 ```js{3,9-12}
 // mouse.js
@@ -132,7 +132,7 @@ Each component instance calling `useMouse()` will create its own copies of `x` a
 
 ## Async State Example {#async-state-example}
 
-A constituível `useMouse()` não recebe quaisquer argumentos, então vamos dar uma vista de olhos em um outro exemplo que utiliza um argumento. Quando estamos a fazer requisição de dados assíncronos, frequentemente precisamos manipular estados diferentes: carregamento, sucesso e erro:
+A função de composição `useMouse()` não recebe quaisquer argumentos, então vamos dar uma vista de olhos em um outro exemplo que utiliza um argumento. Quando estamos a fazer requisição de dados assíncronos, frequentemente precisamos manipular estados diferentes: carregamento, sucesso e erro:
 
 ```vue
 <script setup>
@@ -157,7 +157,7 @@ fetch('...')
 </template>
 ```
 
-Seria entediante ter que repetir este padrão em todo componente que precisar requisitar dados. Vamos extraí-lo para uma constituível:
+Seria entediante ter que repetir este padrão em todo componente que precisar requisitar dados. Vamos extraí-lo para uma função de composição:
 
 ```js
 // fetch.js
@@ -245,7 +245,7 @@ Here's [the updated version of `useFetch()`](https://play.vuejs.org/#eNptVMFu2zA
 
 ### Naming {#naming}
 
-É uma convenção nomear as funções constituíveis com nomes em "camelCase" que começam com o termo "use".
+É uma convenção nomear as funções funções de composição com nomes em "camelCase" que começam com o termo "use".
 
 ### Input Arguments {#input-arguments}
 
@@ -268,16 +268,16 @@ The [useFetch() implementation discussed earlier](#accepting-reactive-state) pro
 
 ### Return Values {#return-values}
 
-Tu tens provavelmente reparado que tens estado exclusivamente utilizando `ref()` ao invés de `reactive()` nas constituíveis. A convenção recomendada é para os constituíveis sempre retornar um objeto não reativo simples contendo várias referências. Isto permite que seja desestruturada nos componentes enquanto preserva a reatividade:
+Tu tens provavelmente reparado que tens estado exclusivamente utilizando `ref()` ao invés de `reactive()` nas funções de composição. A convenção recomendada é para os funções de composição sempre retornar um objeto não reativo simples contendo várias referências. Isto permite que seja desestruturada nos componentes enquanto preserva a reatividade:
 
 ```js
 // "x" e "y" são referências
 const { x, y } = useMouse()
 ```
 
-O retorno de um objeto reativo de uma constituível causará que tais desestruturações percam a conexão de reatividade com o estado dentro da constituível, enquanto as referências preservarão esta conexão.
+O retorno de um objeto reativo de uma função de composição causará que tais desestruturações percam a conexão de reatividade com o estado dentro da função de composição, enquanto as referências preservarão esta conexão.
 
-Se preferires usar o estado retornado dos constituíveis como propriedades de objeto, podes envolver o objeto retornado com `reactive()` para que as referências sejam desembrulhadas. Por exemplo:
+Se preferires usar o estado retornado dos funções de composição como propriedades de objeto, podes envolver o objeto retornado com `reactive()` para que as referências sejam desembrulhadas. Por exemplo:
 
 ```js
 const mouse = reactive(useMouse())
@@ -291,11 +291,11 @@ Mouse position is at: {{ mouse.x }}, {{ mouse.y }}
 
 ### Side Effects {#side-effects}
 
-É aceitável realizar efeitos colaterais (por exemplo, adicionando ouvintes de evento de DOM ou requisitando dados) nas constituíveis, porém preste atenção as seguintes regras:
+É aceitável realizar efeitos colaterais (por exemplo, adicionando ouvintes de evento de DOM ou requisitando dados) nas funções de composição, porém preste atenção as seguintes regras:
 
 - If you are working on an application that uses [Server-Side Rendering](/guide/scaling-up/ssr) (SSR), make sure to perform DOM-specific side effects in post-mount lifecycle hooks, e.g. `onMounted()`. These hooks are only called in the browser, so you can be sure that code inside them has access to the DOM.
 
-- Lembra-te de limpar os efeitos colaterais no `onUnmounted()`. Por exemplo, se uma constituível definir um ouvinte de evento de DOM, ele deve remover este ouvinte no `onUnmounted()` conforme temos visto no exemplo `useMouse()`. Pode ser uma boa ideia usar uma constituível que automaticamente faz isto por ti, como exemplo da `useEventListener()`.
+- Lembra-te de limpar os efeitos colaterais no `onUnmounted()`. Por exemplo, se uma função de composição definir um ouvinte de evento de DOM, ele deve remover este ouvinte no `onUnmounted()` conforme temos visto no exemplo `useMouse()`. Pode ser uma boa ideia usar uma função de composição que automaticamente faz isto por ti, como exemplo da `useEventListener()`.
 
 ### Usage Restrictions {#usage-restrictions}
 
@@ -307,13 +307,13 @@ These restrictions are important because these are the contexts where Vue is abl
 
 2. As propriedades computadas e observadores possam ser ligados a ela, para que elas possam ser colocadas quando a instância for desmontada para evitar fugas de memória.
 
-:::tip Dica
-O `<script setup>` é o único lugar onde podes chamar as constituíveis **depois** do uso de `await`. O compilador restaura automaticamente o contexto da instância ativa por ti depois da operação assíncrona.
+:::tip DICA
+O `<script setup>` é o único lugar onde podes chamar as funções de composição **depois** do uso de `await`. O compilador restaura automaticamente o contexto da instância ativa por ti depois da operação assíncrona.
 :::
 
 ## Extracting Composables for Code Organization {#extracting-composables-for-code-organization}
 
-As constituíveis podem ser extraídas não apenas para reaproveitar, mas também para a organização de código. A medida que a complexidade dos teus componentes crescer, podes acabar com componentes que são muito grandes para navegar e compreender. A API de Composição dá-te completa flexibilidade para organizar o código do teu componente em funções mais pequenas baseadas nas preocupações lógicas:
+As funções de composição podem ser extraídas não apenas para reaproveitar, mas também para a organização de código. A medida que a complexidade dos teus componentes crescer, podes acabar com componentes que são muito grandes para navegar e compreender. A API de Composição dá-te completa flexibilidade para organizar o código do teu componente em funções mais pequenas baseadas nas preocupações lógicas:
 
 ```vue
 <script setup>
@@ -327,11 +327,11 @@ const { qux } = useFeatureC(baz)
 </script>
 ```
 
-Até certo ponto, podes pensar destas constituíveis extraídas como serviços isolados de componente que podem conversar uns com os outros.
+Até certo ponto, podes pensar destas funções de composição extraídas como serviços isolados de componente que podem conversar uns com os outros.
 
 ## Using Composables in Options API {#using-composables-in-options-api}
 
-Se estiveres usando a API de Opções, as constituíveis devem ser chamadas dentro de `setup()`, e as vinculações retornadas dem ser retornadas a partir de `setup()` para que elas sejam expostas ao `this` e para o modelo de marcação:
+Se estiveres usando a API de Opções, as funções de composição devem ser chamadas dentro de `setup()`, e as vinculações retornadas dem ser retornadas a partir de `setup()` para que elas sejam expostas ao `this` e para o modelo de marcação:
 
 ```js
 import { useMouse } from './mouse.js'
@@ -357,11 +357,11 @@ export default {
 
 Users coming from Vue 2 may be familiar with the [mixins](/api/options-composition#mixins) option, which also allows us to extract component logic into reusable units. There are three primary drawbacks to mixins:
 
-1. **Fonte obscura de propriedades**: quando estiver utilizando muitos mixins, torna-se pouco claro qual propriedade de instância é injetada por qual mixin, tornando-o difícil localizar a implementação e entender o comportamento do componente. É também o do porquê que nós recomendamos a utilização do padrão de referências + desestruturação para as constituíveis: isto torna a fonte da propriedade clara nos componentes consumindo.
+1. **Fonte obscura de propriedades**: quando estiver utilizando muitos mixins, torna-se pouco claro qual propriedade de instância é injetada por qual mixin, tornando-o difícil localizar a implementação e entender o comportamento do componente. É também o do porquê que nós recomendamos a utilização do padrão de referências + desestruturação para as funções de composição: isto torna a fonte da propriedade clara nos componentes consumindo.
 
-2. **Colisão de nome de espaço**: vários mixins de diferentes autores podem potencialmente registar a mesmas chaves de propriedade, causando colisões de nome de espaço. Com as constituíveis, podes renomear os valores desestruturados se houverem chaves conflituosas de diferentes constituíveis. 
+2. **Colisão de nome de espaço**: vários mixins de diferentes autores podem potencialmente registar a mesmas chaves de propriedade, causando colisões de nome de espaço. Com as funções de composição, podes renomear os valores desestruturados se houverem chaves conflituosas de diferentes funções de composição. 
 
-3. **Comunicação cruzada de mixin implícita**: vários mixins que precisam interagir uns com os outros têm de depender de chaves de propriedade partilhas, tornando-os implicitamente associados. Com as constituíveis, os valores retornados de uma constituível podem ser passados para uma outra como argumentos, tal como as funções normais.
+3. **Comunicação cruzada de mixin implícita**: vários mixins que precisam interagir uns com os outros têm de depender de chaves de propriedade partilhas, tornando-os implicitamente associados. Com as funções de composição, os valores retornados de uma função de composição podem ser passados para uma outra como argumentos, tal como as funções normais.
 
 Pelas razões acima, não mais recomendamos a utilização de mixins na Vue 3. A funcionalidade é mantida apenas por razões de migração e familiaridade.
 
@@ -369,9 +369,9 @@ Pelas razões acima, não mais recomendamos a utilização de mixins na Vue 3. A
 
 In the component slots chapter, we discussed the [Renderless Component](/guide/components/slots#renderless-components) pattern based on scoped slots. We even implemented the same mouse tracking demo using renderless components.
 
-A principal vantagem das constituíveis sobre os componentes sem interpretação é que as constituíveis não incorrem em despesas gerais da instância de componente adicional. Quando utilizadas por uma aplicação inteira, a quantidade de instâncias de componente adicionais criadas pelo padrão de componente sem interpretação pode tornar-se em despesas gerais de desempenho visível.
+A principal vantagem das funções de composição sobre os componentes sem interpretação é que as funções de composição não incorrem em despesas gerais da instância de componente adicional. Quando utilizadas por uma aplicação inteira, a quantidade de instâncias de componente adicionais criadas pelo padrão de componente sem interpretação pode tornar-se em despesas gerais de desempenho visível.
 
-A recomendação é usar as constituíveis quando reutilizar a lógica pura, e usar os componentes quando estiveres reutilizando tanto a lógica e o esquema visual.
+A recomendação é usar as funções de composição quando reutilizar a lógica pura, e usar os componentes quando estiveres reutilizando tanto a lógica e o esquema visual.
 
 ### vs. React Hooks {#vs-react-hooks}
 
