@@ -55,7 +55,7 @@ Se estiveres a procura de uma alternativa mais leve para uso sem etapa de constr
 
 - The recommended IDE setup is [VSCode](https://code.visualstudio.com/) + the [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) extension. The extension provides syntax highlighting, TypeScript support, and intellisense for template expressions and component props.
 
-  :::tip Dica
+  :::tip DICA
   Volar substitui [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur), a nossa anterior extensão de VSCode oficial para Vue 2. Se tiveres com a Vetur atualmente instalada certifica-te de desativá-la nos projetos de Vue 3.
   :::
 
@@ -140,7 +140,7 @@ Este pacote é parte do mono-repositório núcleo da Vue e é sempre publicado c
 
 O pacote em si mesmo fornece utilitários de mais baixo nível para o processamento de Componentes de Ficheiro Único de Vue e é apenas destinado para criadores de ferramental que precisam suportar Componentes de Ficheiros Único de Vue em ferramentas personalizadas.
 
-:::tip Dica
+:::tip DICA
 Sempre prefira o uso deste pacote através da importação profunda de `vue/compiler-sfc` já que isto garante que a sua versão esteja em sincronia com o executor de Vue.
 :::
 
