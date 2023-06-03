@@ -99,7 +99,7 @@ app.directive('focus', {
 })
 ```
 
-:::tip Dica
+:::tip DICA
 As diretivas personalizadas devem apenas ser utilizadas quando a funcionalidade desejada pode ser apenas alcançado através da manipulação direta do DOM. Prefira a marcação de modelos declarativa utilizando as diretivas embutidas tais como `v-bind` quando possível porque elas são mais eficientes e amigáveis a interpretação no lado do servidor.
 :::
 
@@ -174,7 +174,7 @@ Semelhante as diretivas embutidas, os argumentos de diretiva personalizada podem
 
 Aqui o argumento da diretiva será atualizado de maneira reativa baseada na propriedade `arg` no nosso estado de componente.
 
-:::tip Nota
+:::tip NOTA
 Para além de `el`, deves tratar estes argumentos como de apenas-leitura e nunca modificá-los. Se precisares de partilhar a informação através dos gatilhos, é recomendado fazer isto através do atributo [dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset) do elemento.
 :::
 
