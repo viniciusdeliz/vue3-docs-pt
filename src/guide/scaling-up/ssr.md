@@ -351,7 +351,7 @@ console.log(ctx.teleports) // { '#teleported': 'teleported content' }
 
 Tu podes injetar a marcação do teletransporte na localização correta na tua página de HTML final semelhante a como precisamos injetar a marcação da aplicação principal.
 
-:::tip Dica
+:::tip DICA
 Evite ter o `body` como alvo quando estiveres a usar as Teletransportações e a SSR juntos - normalmente, `<body>` conterá outro conteúdo interpretado no lado do cliente o que torna-o impossível para as Teletransportações determinar a localização inicial correta para hidratação.
 
 No lugar disto, prefira um contentor dedicado, por exemplo,  `<div id="teleported"></div>` que contém apenas conteúdo teletransportado.
