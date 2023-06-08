@@ -1,4 +1,4 @@
-# Perguntas Feitas com Frequência {#frequently-asked-questions}
+# Questões Feitas Frequentemente {#frequently-asked-questions}
 
 ## Who maintains Vue? {#who-maintains-vue}
 
