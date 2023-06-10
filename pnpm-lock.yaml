@@ -29,8 +29,8 @@ devDependencies:
     specifier: ^12.2.3
     version: 12.2.3
   '@types/node':
-    specifier: ^16.9.1
-    version: 16.10.3
+    specifier: ^18.16.1
+    version: 18.16.1
   terser:
     specifier: ^5.14.2
     version: 5.14.2
@@ -549,7 +549,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.3.9(@types/node@16.10.3)(terser@5.14.2)
+      vite: 4.3.9(@types/node@18.16.1)(terser@5.14.2)
       vue: 3.3.4
     dev: false
 
@@ -1009,7 +1009,7 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /vite@4.3.9(@types/node@16.10.3)(terser@5.14.2):
+  /vite@4.3.9(@types/node@18.16.1)(terser@5.14.2):
     resolution: {integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -1034,7 +1034,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 16.10.3
+      '@types/node': 18.16.1
       esbuild: 0.17.19
       postcss: 8.4.24
       rollup: 3.24.0
@@ -1058,7 +1058,7 @@ packages:
       mark.js: 8.11.1
       minisearch: 6.1.0
       shiki: 0.14.2
-      vite: 4.3.9(@types/node@16.10.3)(terser@5.14.2)
+      vite: 4.3.9(@types/node@18.16.1)(terser@5.14.2)
       vue: 3.3.4
     transitivePeerDependencies:
       - '@algolia/client-search'
