@@ -13,13 +13,13 @@ This section assumes basic knowledge of Composition API. If you have been learni
 
 No contexto das aplicações de Vue, uma "função de composição" é uma função que influencia a API de Composição da Vue a resumir e reutilizar **lógica com estado**.
 
-Quando estamos a construir aplicações de frontend, frequentemente precisamos reutilizar a lógica para tarefas comuns. Por exemplo, podemos precisar formatar datas em muitos lugares, assim extraimos uma função reutilizável para isto. Esta função formatadora resume a **lógica sem estado**: ela recebe alguma entrada e imediatamente retorna a saída esperada. Existem muitas bibliotecas por aí a fora para reutilização de lógica sem estado - por exemplo [lodash](https://lodash.com/) e [date-fns](https://date-fns.org/), as quais já podes ter ouvido falar.
+Quando estamos a construir aplicações de frontend, frequentemente precisamos reutilizar a lógica para tarefas comuns. Por exemplo, podemos precisar formatar datas em muitos lugares, assim extraímos uma função reutilizável para isto. Esta função formatadora resume a **lógica sem estado**: ela recebe alguma entrada e imediatamente retorna a saída esperada. Existem muitas bibliotecas por aí a fora para reutilização de lógica sem estado - por exemplo [lodash](https://lodash.com/) e [date-fns](https://date-fns.org/), as quais já podes ter ouvido falar.
 
 By contrast, stateful logic involves managing state that changes over time. A simple example would be tracking the current position of the mouse on a page. In real-world scenarios, it could also be more complex logic such as touch gestures or connection status to a database.
 
 ## Mouse Tracker Example {#mouse-tracker-example}
 
-Se fossemos implementar a funcionalidade de rastreiamento de rato utilizando a API de Composição diretamente de dentro de um componente, ela se pareceria com isto:
+Se fossemos implementar a funcionalidade de rastreamento de rato utilizando a API de Composição diretamente de dentro de um componente, ela se pareceria com isto:
 
 ```vue
 <script setup>
@@ -157,7 +157,7 @@ fetch('...')
 </template>
 ```
 
-Seria entediante ter que repetir este padrão em todo componente que precisar requisitar dados. Vamos extraí-lo para uma função de composição:
+Seria entediante ter de repetir este padrão em todo componente que precisar requisitar dados. Vamos extraí-lo para uma função de composição:
 
 ```js
 // fetch.js
