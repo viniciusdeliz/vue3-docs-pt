@@ -113,7 +113,7 @@ Tu podes vinculá-los a um único elemento utilizando `v-bind` sem um argumento:
 
 ## Utilizando Expressões de JavaScript {#using-javascript-expressions}
 
-Até aqui só temos estado vinculando a chaves de propriedade simples nos modelos de marcação. Mas a Vua atualmente suporta o poder completo das expressões de JavaScript dentro de todas vinculações de data:
+Até aqui só temos estado vinculando a chaves de propriedade simples nos modelos de marcação. Mas a Vue atualmente suporta o poder completo das expressões de JavaScript dentro de todas vinculações de data:
 
 ```vue-html
 {{ number + 1 }}

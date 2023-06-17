@@ -223,7 +223,7 @@ methods: {
 
 É muito comum precisar chamar `event.preventDefault()` ou `event.stopPropagation()` dentro de manipuladores de evento. Ainda que possamos fazer isto facilmente dentro de métodos, seria melhor se os métodos pudessem ser puramente a respeito da lógica dos dados em vez de ter que lidar com detalhes de evento de DOM.
 
-Para tratar este problema, a Vua fornece **modificadores de evento** para `v-on`. Recorda-te de que os modificadores são nomes especiais depois do nome do evento denotados por um ponto.
+Para tratar este problema, a Vue fornece **modificadores de evento** para `v-on`. Recorda-te de que os modificadores são nomes especiais depois do nome do evento denotados por um ponto.
 
 - `.stop`
 - `.prevent`
